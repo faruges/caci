@@ -1,15 +1,15 @@
 <template>
-    <app-layout title="Tablero personal">
+    <app-layout title="Datos del tutor">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Bienvenido al CACI
+                Datos personales del(la) derecho habiente
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <Inicio />
+                    <ListaDatosTutor />
                 </div>
             </div>
         </div>
@@ -18,14 +18,15 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue';
-    import AppLayout from '@/Layouts/AppLayout.vue';
-    import Inicio from "@/Pages/inicio";
+import { defineComponent } from 'vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
-    export default defineComponent({
-        components: {
-            Inicio,
-            AppLayout,
-        },
-    })
+import ListaDatosTutor from "@/Pages/Tutor/ListaDatosTutor";
+
+export default defineComponent({
+    components: {
+        ListaDatosTutor,
+        AppLayout,
+    },
+})
 </script>

@@ -28,6 +28,13 @@ Route::get('/dashboard', [App\Http\Controllers\PageController::class, 'dashboard
 ->middleware('auth:sanctum')
 ->name('dashboard');
 
+Route::get('/datos-tutor', [App\Http\Controllers\DatosTutorController::class, 'datosTutor'])
+    ->middleware('auth:sanctum')
+    ->name('datos-tutor');
+
+Route::resource('datosTutor', App\Http\Controllers\DatosTutorController::class)
+    ->middleware('auth:sanctum');
+
 //Route::resource('rfc', App\Http\Controllers\RfcController::class);
 
 //Route::controller(App\Http\Controllers\RfcController::class)->group(function (){
