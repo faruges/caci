@@ -32,6 +32,11 @@ class DatosTutorController extends Controller
         return Inertia::render('Tutor/DatosTutorCreate');
     }
 
+    public function createP2()
+    {
+        return Inertia::render('Tutor/DatosTutorCreateP2');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

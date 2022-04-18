@@ -23,79 +23,96 @@
                             <div class="p-6">
                                 <div class="ml-3 mr-3 ">
                                     <div class="my-2">
-                                        <jet-label for="nombre" value="nombre:"/>
-                                        <jet-input id="nombre" type="text" class="mt-1 block w-full" v-model="nombre"
+                                        <jet-label for="funcion_real" value="Función Real:"/>
+                                        <jet-input id="funcion_real" type="text" class="mt-1 block w-full"
+                                                   v-model="funcion_real"
                                                    required
+                                                   placeholder="Función Real"
                                                    autofocus
-                                                   autocomplete="nombre"/>
+                                                   autocomplete="funcion_real"/>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class=" ml-12 text-lg text-gray-600 leading-7 font-semibold">
+                                            Domicilio Laboral
+                                        </div>
                                     </div>
                                     <div class="my-4">
-                                        <jet-label for="apellido_paterno" value="Apellido Paterno"/>
-                                        <jet-input id="Apellido_paterno" type="text" class="mt-1 block w-full"
-                                                   v-model="apellido_paterno"
+                                        <jet-label for="domicilio_laboralo" value="Domicilio Laboral(Avenida o calle):"/>
+                                        <jet-input id="domicilio_laboralo" type="text" class="mt-1 block w-full"
+                                                   v-model="domicilio_laboralo"
                                                    required
+                                                   placeholder="Domicilio Laboral(Avenida o calle)"
                                                    autofocus
-                                                   autocomplete="apellido_paterno"/>
-                                    </div>
-
-                                    <div class="my-4">
-                                        <jet-label for="apellido_materno" value="Apellido Materno"/>
-                                        <jet-input id="Apellido_materno" type="text" class="mt-1 block w-full"
-                                                   v-model="apellido_materno"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="apellido materno"/>
-                                    </div>
-
-                                    <div class="my-4">
-                                        <jet-label for="Rfc" value="RFC con Homoclave"/>
-                                        <jet-input id="RFC" type="text" class="mt-1 block w-full" v-model="rfc"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="rfc con homoclave"/>
+                                                   autocomplete="domicilio_laboralo"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="curp" value="CURP"/>
-                                        <jet-input id="CURP" type="text" class="mt-1 block w-full" v-model="curp"
+                                        <jet-label for="numero_ext_int" value="Número (Exterior, Interior, Lote, Manzana, etc.):"/>
+                                        <jet-input id="numero_ext_int" type="text" class="mt-1 block w-full"
+                                                   v-model="numero_ext_int"
                                                    required
+                                                   placeholder=" Número (Exterior, Interior, Lote, Manzana, etc.)"
                                                    autofocus
-                                                   autocomplete="CURP"/>
+                                                   autocomplete="numero_ext_int"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="genero" value="Genero"/>
-                                        <jet-input id="Genero" type="text" class="mt-1 block w-full" v-model="genero"
+                                        <jet-label for="colonia_lab" value="Colonia:"/>
+                                        <jet-input id="colonia_lab" type="text" class="mt-1 block w-full" v-model="colonia_lab"
                                                    required
+                                                   placeholder="Colonia"
                                                    autofocus
-                                                   autocomplete="Genero"/>
+                                                   autocomplete="colonia_lab"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="Entidad_de_nacimiento"
-                                                   value="Entidad Federativa de Nacimiento"/>
-                                        <jet-input id="Entidad_de_nacimiento" type="text" class="mt-1 block w-full"
-                                                   v-model="entidad_de_nacimiento"
+                                        <jet-label for="alcaldia" value="Alcaldía"/>
+                                        <jet-input id="alcaldia" type="text" class="mt-1 block w-full" v-model="alcaldia"
                                                    required
+                                                   placeholder="Alcaldía"
                                                    autofocus
-                                                   autocomplete="Entidad Federativa de Nacimiento"/>
+                                                   autocomplete="alcaldia"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="Edad" value="Edad"/>
-                                        <jet-input id="Edad" type="text" class="mt-1 block w-full" v-model="edad"
+                                        <jet-label for="codogo_postal" value="Código Postal"/>
+                                        <jet-input id="codogo_postal" type="text" class="mt-1 block w-full" v-model="codogo_postal"
                                                    required
+                                                   placeholder="Código Postal"
                                                    autofocus
-                                                   autocomplete="edad"/>
+                                                   autocomplete="codogo_postal"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="Estado_civil" value="Estado civil"/>
-                                        <jet-input id="Estado_civil" type="text" class="mt-1 block w-full"
-                                                   v-model="estado_civil"
+                                        <jet-label for="teléfono_laboral"
+                                                   value="Teléfono Laboral"/>
+                                        <jet-input id="teléfono_laboral" type="text" class="mt-1 block w-full"
+                                                   v-model="teléfono_laboral"
                                                    required
+                                                   placeholder="Teléfono Laboral"
                                                    autofocus
-                                                   autocomplete="Estado Civil"/>
+                                                   autocomplete="teléfono_laboral"/>
+                                    </div>
+
+                                    <div class="my-4">
+                                        <jet-label for="extension_del_reléfono_laboral"
+                                                   value="Extensión del Teléfono Laboral"/>
+                                        <jet-input id="extension_del_reléfono_laboral" type="text" class="mt-1 block w-full"
+                                                   v-model="extension_del_reléfono_laboral"
+                                                   required
+                                                   placeholder="extension_del_reléfono_laboral"
+                                                   autofocus
+                                                   autocomplete="extension_del_reléfono_laboral"/>
+                                    </div>
+
+                                    <div class="my-4">
+                                        <jet-label for="tipo_de_nomina" value="Tipo de Nomina:"/>
+                                        <jet-input id="tipo_de_nomina" type="text" class="mt-1 block w-full"
+                                                   v-model="tipo_de_nomina"
+                                                   required
+                                                   placeholder="Tipo de Nomina"
+                                                   autofocus
+                                                   autocomplete="tipo_de_nomina"/>
                                     </div>
                                 </div>
                             </div>
@@ -104,23 +121,25 @@
                             <div class="p-6">
                                 <div class="ml-3 mr-3">
                                     <div class="my-2">
-                                        <jet-label for="nivel_de_escolaridad" value="Nivel Maximo de Escolaridad:"/>
-                                        <jet-input id="nivel_de_escolaridad" type="text" class="mt-1 block w-full"
-                                                   v-model="nivel_de_escolaridad"
+                                        <jet-label for="numero_de_empleado" value="Número de Empleado:"/>
+                                        <jet-input id="numero_de_empleado" type="text" class="mt-1 block w-full"
+                                                   v-model="numero_de_empleado"
                                                    required
+                                                   placeholder="Número de Empleado"
                                                    autofocus
-                                                   autocomplete="Nivel Maximo de Escolaridad"/>
+                                                   autocomplete="numero_de_empleado"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="en_curso_trunco_o_concluido"
-                                                   value="¿En curso, Trunco o Concluido?:"/>
-                                        <jet-input id="en_curso_trunco_o_concluido" type="text"
+                                        <jet-label for="numero_de_plaza"
+                                                   value="Número de Plaza:"/>
+                                        <jet-input id="numero_de_plaza" type="text"
                                                    class="mt-1 block w-full"
-                                                   v-model="en_curso_trunco_o_concluido"
+                                                   v-model="numero_de_plaza"
                                                    required
+                                                   placeholder="numero_de_plaza"
                                                    autofocus
-                                                   autocomplete="en curso, trunco o concluido"/>
+                                                   autocomplete="Número de Plaza"/>
                                     </div>
 
                                     <div class="my-4">
@@ -295,13 +314,16 @@
 
                                     <div class="my-12">
 
-                                        <a :href="route('datos-tutor.create-P2')">
-                                            <jet-button class="bg-blue-600">
-                                                Siguiente
+                                        <a :href="route('datosTutor.create')">
+                                            <jet-button class="bg-blue-600 mx-8">
+                                                Atras
                                             </jet-button>
                                         </a>
 
 
+                                        <jet-button class="bg-blue-600 mx-8">
+                                            Guardar
+                                        </jet-button>
                                     </div>
 
                                 </div>

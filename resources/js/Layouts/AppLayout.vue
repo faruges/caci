@@ -31,7 +31,7 @@
                             </div>
                             <!--Datos infante-->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('datosTutor.create')" :active="route().current('datos_infante')">
+                                <jet-nav-link :href="route('dashboard')" :active="route().current('datos_infante')">
                                     Datos del(los) Intante(s)
                                 </jet-nav-link>
                             </div>

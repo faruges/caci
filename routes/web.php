@@ -22,11 +22,9 @@ Route::get('/welcome', function () {
 });
 
 
-
-
 Route::get('/dashboard', [App\Http\Controllers\PageController::class, 'dashboard'])
-->middleware('auth:sanctum')
-->name('dashboard');
+    ->middleware('auth:sanctum')
+    ->name('dashboard');
 
 Route::get('/datos-tutor', [App\Http\Controllers\DatosTutorController::class, 'datosTutor'])
     ->middleware('auth:sanctum')
@@ -34,6 +32,10 @@ Route::get('/datos-tutor', [App\Http\Controllers\DatosTutorController::class, 'd
 
 Route::resource('datosTutor', App\Http\Controllers\DatosTutorController::class)
     ->middleware('auth:sanctum');
+
+Route::get('/datos-tutor/create-P2', [App\Http\Controllers\DatosTutorController::class, 'createP2'])
+    ->middleware('auth:sanctum')
+    ->name('datos-tutor.create-P2');
 
 //Route::resource('rfc', App\Http\Controllers\RfcController::class);
 
