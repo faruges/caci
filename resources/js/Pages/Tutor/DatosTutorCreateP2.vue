@@ -25,7 +25,7 @@
                                     <div class="my-2">
                                         <jet-label for="funcion_real" value="Función Real:"/>
                                         <jet-input id="funcion_real" type="text" class="mt-1 block w-full"
-                                                   v-model="funcion_real"
+                                                   v-model="form.funcion_real"
                                                    required
                                                    placeholder="Función Real"
                                                    autofocus
@@ -37,7 +37,8 @@
                                         </div>
                                     </div>
                                     <div class="my-4">
-                                        <jet-label for="domicilio_laboralo" value="Domicilio Laboral(Avenida o calle):"/>
+                                        <jet-label for="domicilio_laboralo"
+                                                   value="Domicilio Laboral(Avenida o calle):"/>
                                         <jet-input id="domicilio_laboralo" type="text" class="mt-1 block w-full"
                                                    v-model="domicilio_laboralo"
                                                    required
@@ -47,7 +48,8 @@
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="numero_ext_int" value="Número (Exterior, Interior, Lote, Manzana, etc.):"/>
+                                        <jet-label for="numero_ext_int"
+                                                   value="Número (Exterior, Interior, Lote, Manzana, etc.):"/>
                                         <jet-input id="numero_ext_int" type="text" class="mt-1 block w-full"
                                                    v-model="numero_ext_int"
                                                    required
@@ -58,7 +60,8 @@
 
                                     <div class="my-4">
                                         <jet-label for="colonia_lab" value="Colonia:"/>
-                                        <jet-input id="colonia_lab" type="text" class="mt-1 block w-full" v-model="colonia_lab"
+                                        <jet-input id="colonia_lab" type="text" class="mt-1 block w-full"
+                                                   v-model="colonia_lab"
                                                    required
                                                    placeholder="Colonia"
                                                    autofocus
@@ -67,7 +70,8 @@
 
                                     <div class="my-4">
                                         <jet-label for="alcaldia" value="Alcaldía"/>
-                                        <jet-input id="alcaldia" type="text" class="mt-1 block w-full" v-model="alcaldia"
+                                        <jet-input id="alcaldia" type="text" class="mt-1 block w-full"
+                                                   v-model="alcaldia"
                                                    required
                                                    placeholder="Alcaldía"
                                                    autofocus
@@ -76,7 +80,8 @@
 
                                     <div class="my-4">
                                         <jet-label for="codogo_postal" value="Código Postal"/>
-                                        <jet-input id="codogo_postal" type="text" class="mt-1 block w-full" v-model="codogo_postal"
+                                        <jet-input id="codogo_postal" type="text" class="mt-1 block w-full"
+                                                   v-model="codogo_postal"
                                                    required
                                                    placeholder="Código Postal"
                                                    autofocus
@@ -97,7 +102,8 @@
                                     <div class="my-4">
                                         <jet-label for="extension_del_reléfono_laboral"
                                                    value="Extensión del Teléfono Laboral"/>
-                                        <jet-input id="extension_del_reléfono_laboral" type="text" class="mt-1 block w-full"
+                                        <jet-input id="extension_del_reléfono_laboral" type="text"
+                                                   class="mt-1 block w-full"
                                                    v-model="extension_del_reléfono_laboral"
                                                    required
                                                    placeholder="extension_del_reléfono_laboral"
@@ -356,7 +362,8 @@ export default defineComponent({
         return {
             form: this.$inertia.form({
                 name: 'Amado Lider Honorable Licenciao Andrés Manuel López Obrador',
-                informacion_relefante: 'esta es la información relevantre gawgdviqGLIDGQ.JHG DFIUWEGD WHIW FGLIU Glfige.fuiEG EFLIU '
+                funcion_real:'',
+
 
             })
         }

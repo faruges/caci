@@ -21359,8 +21359,37 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: this.$inertia.form({
-        name: 'Amado Lider Honorable Licenciao Andrés Manuel López Obrador',
-        informacion_relefante: 'esta es la información relevantre gawgdviqGLIDGQ.JHG DFIUWEGD WHIW FGLIU Glfige.fuiEG EFLIU '
+        nombre: 'Amado Lider Honorable Licenciao Andrés Manuel López Obrador',
+        genero: '',
+        entidad_nacimiento: '',
+        niveles_escolares: ['Primaria', 'Secundaria', 'Media superior', 'Superior'],
+        nivel_escolaridad: '',
+        status_niveles_escolares: ['En curso', 'Trunco', 'Concluido'],
+        status_escolar: '',
+        parentescos: ['hijo', 'hija', 'hermana', 'hermano', 'sobrino', 'sobrina', 'prima', 'primo'],
+        parentesco_con_el_infante: '',
+        estados_civil: ['soltero(a)', 'casado(a)', 'divorciado(a)'],
+        estado_civil: '',
+        codigo_postal: '',
+        domicilio_particular: '',
+        numero_direccion: '',
+        colonia: '',
+        alcaldia_o_municipio: '',
+        telefono_paticular: '',
+        apellido_paterno: '',
+        apellido_materno: '',
+        rfc: '',
+        curp: '',
+        edad: '',
+        telefono_celular: '',
+        telefono_recados: '',
+        Emai: '',
+        clave_sector: '',
+        secretaria_o_ente_dministrativo: '',
+        clave_unidad_administrativa: '',
+        nombre_unidad_administrativa: '',
+        oficina_o_area_de_adscripcion: '',
+        descripcion_del_puesto: ''
       })
     };
   }
@@ -21400,7 +21429,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: this.$inertia.form({
         name: 'Amado Lider Honorable Licenciao Andrés Manuel López Obrador',
-        informacion_relefante: 'esta es la información relevantre gawgdviqGLIDGQ.JHG DFIUWEGD WHIW FGLIU Glfige.fuiEG EFLIU '
+        funcion_real: ''
       })
     };
   }
@@ -26310,7 +26339,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, " Bienvenido(a): " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.name), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, " Bienvenido(a): " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.nombre), 1
       /* TEXT */
       )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "nombre",
@@ -26319,269 +26348,289 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "nombre",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.nombre,
+        modelValue: _ctx.form.nombre,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.nombre = $event;
+          return _ctx.form.nombre = $event;
         }),
         required: "",
+        placeholder: "Nombre",
         autofocus: "",
         autocomplete: "nombre"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "apellido_paterno",
-        value: "Apellido Paterno"
+        value: "Apellido Paterno:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "Apellido_paterno",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.apellido_paterno,
+        modelValue: _ctx.form.apellido_paterno,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return _ctx.apellido_paterno = $event;
+          return _ctx.form.apellido_paterno = $event;
         }),
         required: "",
+        placeholder: "Apellido paterno",
         autofocus: "",
         autocomplete: "apellido_paterno"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "apellido_materno",
+        "for": "apellido_materno:",
         value: "Apellido Materno"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "Apellido_materno",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.apellido_materno,
+        modelValue: _ctx.form.apellido_materno,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return _ctx.apellido_materno = $event;
+          return _ctx.form.apellido_materno = $event;
         }),
         required: "",
+        placeholder: "Apellido materno",
         autofocus: "",
         autocomplete: "apellido materno"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "Rfc",
-        value: "RFC con Homoclave"
+        value: "RFC con Homoclave:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "RFC",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.rfc,
+        modelValue: _ctx.form.rfc,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return _ctx.rfc = $event;
+          return _ctx.form.rfc = $event;
         }),
         required: "",
+        placeholder: "RFC con homoclave",
         autofocus: "",
         autocomplete: "rfc con homoclave"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "curp",
-        value: "CURP"
+        value: "CURP:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "CURP",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.curp,
+        modelValue: _ctx.form.curp,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return _ctx.curp = $event;
+          return _ctx.form.curp = $event;
         }),
         required: "",
+        placeholder: "CURP",
         autofocus: "",
         autocomplete: "CURP"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "genero",
-        value: "Genero"
+        value: "Genero:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "Genero",
+        id: "genero",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.genero,
+        modelValue: _ctx.form.genero,
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return _ctx.genero = $event;
+          return _ctx.form.genero = $event;
         }),
         required: "",
+        placeholder: "genero",
         autofocus: "",
-        autocomplete: "Genero"
+        autocomplete: "genero"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "Entidad_de_nacimiento",
-        value: "Entidad Federativa de Nacimiento"
+        "for": "entidad_de_nacimiento",
+        value: "Entidad Federativa de Nacimiento:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "Entidad_de_nacimiento",
+        id: "entidad_federativa",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.entidad_de_nacimiento,
+        modelValue: _ctx.form.entidad_nacimiento,
         "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-          return _ctx.entidad_de_nacimiento = $event;
+          return _ctx.form.entidad_nacimiento = $event;
         }),
         required: "",
+        placeholder: "Entidad federativa donde ha nacido ",
         autofocus: "",
-        autocomplete: "Entidad Federativa de Nacimiento"
+        autocomplete: "entidad federativa"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "Edad",
-        value: "Edad"
+        value: "Edad:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "Edad",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.edad,
+        modelValue: _ctx.form.edad,
         "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-          return _ctx.edad = $event;
+          return _ctx.form.edad = $event;
         }),
         required: "",
+        placeholder: "Edad",
         autofocus: "",
         autocomplete: "edad"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "Estado_civil",
-        value: "Estado civil"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "Estado_civil",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.estado_civil,
+        value: "Estado civil:"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        id: "estado_civil",
         "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-          return _ctx.estado_civil = $event;
+          return _ctx.form.estado_civil = $event;
         }),
-        required: "",
-        autofocus: "",
-        autocomplete: "Estado Civil"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "class": "border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.form.estados_civil, function (edo_civil) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(edo_civil), 1
+        /* TEXT */
+        );
+      }), 256
+      /* UNKEYED_FRAGMENT */
+      ))], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.form.estado_civil]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "nivel_de_escolaridad",
         value: "Nivel Maximo de Escolaridad:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "nivel_de_escolaridad",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.nivel_de_escolaridad,
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        id: "Nivel_escolaridad",
         "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-          return _ctx.nivel_de_escolaridad = $event;
+          return _ctx.form.nivel_escolaridad = $event;
         }),
-        required: "",
-        autofocus: "",
-        autocomplete: "Nivel Maximo de Escolaridad"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "class": "border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.form.niveles_escolares, function (nivel_escolar) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(nivel_escolar), 1
+        /* TEXT */
+        );
+      }), 256
+      /* UNKEYED_FRAGMENT */
+      ))], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.form.nivel_escolaridad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "en_curso_trunco_o_concluido",
         value: "¿En curso, Trunco o Concluido?:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "en_curso_trunco_o_concluido",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.en_curso_trunco_o_concluido,
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        id: "Nivel_escolaridad",
         "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-          return _ctx.en_curso_trunco_o_concluido = $event;
+          return _ctx.form.status_nivel_escolar = $event;
         }),
-        required: "",
-        autofocus: "",
-        autocomplete: "en curso, trunco o concluido"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "class": "border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.form.status_niveles_escolares, function (status_escolar) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(status_escolar), 1
+        /* TEXT */
+        );
+      }), 256
+      /* UNKEYED_FRAGMENT */
+      ))], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.form.status_nivel_escolar]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "parentesco_con_el_infante",
         value: "Parentesco con la Niña o el Niño:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
         id: "parentesco_con_el_infante",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.parentesco_con_el_niña_o_niño,
         "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-          return _ctx.parentesco_con_el_niña_o_niño = $event;
+          return _ctx.form.parentesco_con_el_infante = $event;
         }),
-        required: "",
-        autofocus: "",
-        autocomplete: "Parentesco con la Niña o el Niño"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "domicilio_particular",
-        value: "Domicilio particular (avenida o calle):"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "domicilio_particular",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.domicilio_particular,
-        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-          return _ctx.domicilio_particular = $event;
-        }),
-        required: "",
-        autofocus: "",
-        autocomplete: "domicilio particular"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "numero_d",
-        value: "Número (Exterior, Interior, Lote, Manzana etc.):"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "numero_d",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.numero_d,
-        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-          return _ctx.numero_d = $event;
-        }),
-        required: "",
-        autofocus: "",
-        autocomplete: "Número (Exterior, Interior, Lote, Manzana etc.)"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "colonia",
-        value: "Colonia:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "colonia",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.colonia,
-        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-          return _ctx.colonia = $event;
-        }),
-        required: "",
-        autofocus: "",
-        autocomplete: "Colonia"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "alcaldia_o_municipio",
-        value: "Alcaldía o Municipio:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "alcaldia_o_municipio",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.alcaldia_o_municipio,
-        "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
-          return _ctx.alcaldia_o_municipio = $event;
-        }),
-        required: "",
-        autofocus: "",
-        autocomplete: "alcaldia o municipio"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "class": "border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.form.parentescos, function (parentesco) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(parentesco), 1
+        /* TEXT */
+        );
+      }), 256
+      /* UNKEYED_FRAGMENT */
+      ))], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.form.parentesco_con_el_infante]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "codigo_postal",
         value: "Código Postal:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "codigo_postal",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.codigo_postal,
-        "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
-          return _ctx.codigo_postal = $event;
+        modelValue: _ctx.form.codigo_postal,
+        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+          return _ctx.form.codigo_postal = $event;
         }),
+        modelModifiers: {
+          number: true
+        },
         required: "",
+        placeholder: "Código postal",
         autofocus: "",
         autocomplete: "Código postal"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "domicilio_particular",
+        value: "Domicilio particular (avenida o calle):"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "domicilio_particular",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: _ctx.form.domicilio_particular,
+        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+          return _ctx.form.domicilio_particular = $event;
+        }),
+        required: "",
+        placeholder: "Domicilio particular",
+        autofocus: "",
+        autocomplete: "domicilio particular"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "numero_d",
+        value: "Número (Exterior, Interior, Lote, Manzana etc.):"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "numero_d",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: _ctx.form.numero_direccion,
+        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+          return _ctx.form.numero_direccion = $event;
+        }),
+        required: "",
+        placeholder: "Número (Exterior, Interior, Lote, Manzana etc)",
+        autofocus: "",
+        autocomplete: "Número (Exterior, Interior, Lote, Manzana etc.)"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "colonia",
+        value: "Colonia:"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "colonia",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: _ctx.form.colonia,
+        "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
+          return _ctx.form.colonia = $event;
+        }),
+        required: "",
+        placeholder: "Colonia",
+        autofocus: "",
+        autocomplete: "Colonia"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "alcaldia_o_municipio",
+        value: "Alcaldía o Municipio:"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "alcaldia_o_municipio",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: _ctx.form.alcaldia_o_municipio,
+        "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
+          return _ctx.form.alcaldia_o_municipio = $event;
+        }),
+        required: "",
+        placeholder: "Alcaldía o Municipio",
+        autofocus: "",
+        autocomplete: "alcaldia o municipio"
       }, null, 8
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
@@ -26591,11 +26640,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "telefono_particular",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.telefono_paticular,
+        modelValue: _ctx.form.telefono_paticular,
         "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
-          return _ctx.telefono_paticular = $event;
+          return _ctx.form.telefono_paticular = $event;
         }),
         required: "",
+        placeholder: "Teléfono Particular",
         autofocus: "",
         autocomplete: "Telefono particular"
       }, null, 8
@@ -26607,11 +26657,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "telefono_celular",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.telefono_celular,
+        modelValue: _ctx.form.telefono_celular,
         "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
-          return _ctx.telefono_celular = $event;
+          return _ctx.form.telefono_celular = $event;
         }),
         required: "",
+        placeholder: "Teléfono Celular",
         autofocus: "",
         autocomplete: "Teléfono Celular"
       }, null, 8
@@ -26623,11 +26674,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "telefono_recados",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.telefono_recados,
+        modelValue: _ctx.form.telefono_recados,
         "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
-          return _ctx.telefono_recados = $event;
+          return _ctx.form.telefono_recados = $event;
         }),
         required: "",
+        placeholder: "Teléfono para Recados",
         autofocus: "",
         autocomplete: " Teléfono para Recados"
       }, null, 8
@@ -26636,14 +26688,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "for": "Email",
         value: "Correo Electrónico:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "Email",
-        type: "text",
+        type: "email",
+        id: "email",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.Email,
+        modelValue: _ctx.form.Email,
         "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
-          return _ctx.Email = $event;
+          return _ctx.form.Email = $event;
         }),
         required: "",
+        placeholder: "correo electrónico",
         autofocus: "",
         autocomplete: "Email"
       }, null, 8
@@ -26655,11 +26708,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "clave_sector",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.clave_sector,
+        modelValue: _ctx.form.clave_sector,
         "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
-          return _ctx.clave_sector = $event;
+          return _ctx.form.clave_sector = $event;
         }),
         required: "",
+        placeholder: "Clave de Sector",
         autofocus: "",
         autocomplete: "Clave de Sector"
       }, null, 8
@@ -26671,11 +26725,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "secretaria_o_ente_dministrativo",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.secretaria_o_ente_dministrativo,
+        modelValue: _ctx.form.secretaria_o_ente_dministrativo,
         "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
-          return _ctx.secretaria_o_ente_dministrativo = $event;
+          return _ctx.form.secretaria_o_ente_dministrativo = $event;
         }),
         required: "",
+        placeholder: "Secretaría o Ente Administrativo",
         autofocus: "",
         autocomplete: "SECRETARÍA O ENTE ADMINISTRATIVO"
       }, null, 8
@@ -26687,11 +26742,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "clave_unidad_administrativa",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.clave_unidad_administrativa,
+        modelValue: _ctx.form.clave_unidad_administrativa,
         "onUpdate:modelValue": _cache[23] || (_cache[23] = function ($event) {
-          return _ctx.clave_unidad_administrativa = $event;
+          return _ctx.form.clave_unidad_administrativa = $event;
         }),
         required: "",
+        placeholder: "Clave de la Unidad Administrativa",
         autofocus: "",
         autocomplete: "Clave de la Unidad Administrativa"
       }, null, 8
@@ -26703,11 +26759,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "nombre_unidad_administrativa",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.nombre_unidad_administrativa,
+        modelValue: _ctx.form.nombre_unidad_administrativa,
         "onUpdate:modelValue": _cache[24] || (_cache[24] = function ($event) {
-          return _ctx.nombre_unidad_administrativa = $event;
+          return _ctx.form.nombre_unidad_administrativa = $event;
         }),
         required: "",
+        placeholder: "Nombre de la Unidad Administrativa",
         autofocus: "",
         autocomplete: "Nombre de la Unidad Administrativa"
       }, null, 8
@@ -26719,11 +26776,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "oficina_o_area_de_adscripcion",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.oficina_o_area_de_adscripcion,
+        modelValue: _ctx.form.oficina_o_area_de_adscripcion,
         "onUpdate:modelValue": _cache[25] || (_cache[25] = function ($event) {
-          return _ctx.oficina_o_area_de_adscripcion = $event;
+          return _ctx.form.oficina_o_area_de_adscripcion = $event;
         }),
         required: "",
+        placeholder: "Oficina o Área de Adscripción",
         autofocus: "",
         autocomplete: "oficina_o_area_de_adscripcion"
       }, null, 8
@@ -26735,11 +26793,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "descripcion_del_puesto",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.descripcion_del_puesto,
+        modelValue: _ctx.form.descripcion_del_puesto,
         "onUpdate:modelValue": _cache[26] || (_cache[26] = function ($event) {
-          return _ctx.descripcion_del_puesto = $event;
+          return _ctx.form.descripcion_del_puesto = $event;
         }),
         required: "",
+        placeholder: "Descripción del puesto",
         autofocus: "",
         autocomplete: "descripcion_del_puesto"
       }, null, 8
@@ -26947,9 +27006,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "funcion_real",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.funcion_real,
+        modelValue: _ctx.form.funcion_real,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.funcion_real = $event;
+          return _ctx.form.funcion_real = $event;
         }),
         required: "",
         placeholder: "Función Real",
