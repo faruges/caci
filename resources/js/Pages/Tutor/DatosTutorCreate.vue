@@ -24,7 +24,8 @@
                                 <div class="ml-3 mr-3 ">
                                     <div class="my-2">
                                         <jet-label for="nombre" value="nombre:"/>
-                                        <jet-input id="nombre" type="text" class="mt-1 block w-full" v-model="form.nombre"
+                                        <jet-input id="nombre" type="text" class="mt-1 block w-full"
+                                                   v-model="form.nombre"
                                                    required
                                                    placeholder="Nombre"
                                                    autofocus
@@ -70,7 +71,8 @@
 
                                     <div class="my-4">
                                         <jet-label for="genero" value="Genero:"/>
-                                        <jet-input id="genero" type="text" class="mt-1 block w-full" v-model="form.genero"
+                                        <jet-input id="genero" type="text" class="mt-1 block w-full"
+                                                   v-model="form.genero"
                                                    required
                                                    placeholder="genero"
                                                    autofocus
@@ -102,6 +104,9 @@
                                         <jet-label for="Estado_civil" value="Estado civil:"/>
                                         <select id="estado_civil" v-model="form.estado_civil"
                                                 class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                            <option :value="form.estado_civil">
+                                                {{form.estado_civil}}
+                                            </option>
                                             <option v-for="edo_civil in form.estados_civil">
                                                 {{ edo_civil }}
                                             </option>
@@ -117,6 +122,9 @@
                                         <jet-label for="nivel_de_escolaridad" value="Nivel Maximo de Escolaridad:"/>
                                         <select id="Nivel_escolaridad" v-model="form.nivel_escolaridad"
                                                 class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                            <option :value="form.nivel_escolaridad">
+                                               {{form.nivel_escolaridad}}
+                                            </option>
                                             <option v-for="nivel_escolar in form.niveles_escolares">
                                                 {{ nivel_escolar }}
                                             </option>
@@ -126,8 +134,11 @@
                                     <div class="my-4">
                                         <jet-label for="en_curso_trunco_o_concluido"
                                                    value="¿En curso, Trunco o Concluido?:"/>
-                                        <select id="Nivel_escolaridad" v-model="form.status_nivel_escolar"
+                                        <select id="Nivel_escolaridad" v-model="form.status_escolar"
                                                 class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                            <option :value="form.status_escolar">
+                                                {{form.status_escolar}}
+                                            </option>
                                             <option v-for="status_escolar in form.status_niveles_escolares">
                                                 {{ status_escolar }}
                                             </option>
@@ -139,6 +150,9 @@
                                                    value="Parentesco con la Niña o el Niño:"/>
                                         <select id="parentesco_con_el_infante" v-model="form.parentesco_con_el_infante"
                                                 class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                           <option :value="form.parentesco_con_el_infante">
+                                               {{form.parentesco_con_el_infante}}
+                                           </option>
                                             <option v-for="parentesco in form.parentescos">
                                                 {{ parentesco }}
                                             </option>
@@ -242,7 +256,7 @@
                                     <div class="my-4">
                                         <jet-label for="Email"
                                                    value="Correo Electrónico:"/>
-                                        <jet-input type="email" id="email"  class="mt-1 block w-full"
+                                        <jet-input type="email" id="email" class="mt-1 block w-full"
                                                    v-model="form.Email"
                                                    required
                                                    placeholder="correo electrónico"
@@ -323,7 +337,7 @@
                                     <div class="my-12">
 
                                         <a :href="route('datos-tutor.create-P2')">
-                                            <jet-button class="bg-blue-600">
+                                            <jet-button @click="persist" class="bg-blue-600">
                                                 Siguiente
                                             </jet-button>
                                         </a>
@@ -360,48 +374,157 @@ export default defineComponent({
     data() {
         return {
             form: this.$inertia.form({
-                nombre: 'Amado Lider Honorable Licenciao Andrés Manuel López Obrador',
+                nombre: ' Andrés Manuel López Obrador',
                 genero: '',
                 entidad_nacimiento: '',
                 niveles_escolares: ['Primaria', 'Secundaria', 'Media superior', 'Superior'],
-                nivel_escolaridad: '',
+                nivel_escolaridad: 'Seleccione una opción',
                 status_niveles_escolares: ['En curso', 'Trunco', 'Concluido'],
-                status_escolar: '',
+                status_escolar: 'Seleccione una opción',
                 parentescos: ['hijo', 'hija', 'hermana', 'hermano', 'sobrino', 'sobrina', 'prima', 'primo',],
-                parentesco_con_el_infante: '',
+                parentesco_con_el_infante: 'Seleccione una opción',
                 estados_civil: ['soltero(a)', 'casado(a)', 'divorciado(a)'],
-                estado_civil: '',
+                estado_civil: 'Seleccione una opción',
                 codigo_postal: '',
-                domicilio_particular:'',
-                numero_direccion:'',
-                colonia:'',
-                alcaldia_o_municipio:'',
-                telefono_paticular:'',
+                domicilio_particular: '',
+                numero_direccion: '',
+                colonia: '',
+                alcaldia_o_municipio: '',
+                telefono_paticular: '',
                 apellido_paterno: '',
-                apellido_materno:'',
-                rfc:'',
-                curp:'',
-                edad:'',
-                telefono_celular:'',
-                telefono_recados:'',
-                Emai:'',
-                clave_sector:'',
-                secretaria_o_ente_dministrativo:'',
-                clave_unidad_administrativa:'',
-                nombre_unidad_administrativa:'',
-                oficina_o_area_de_adscripcion:'',
-                descripcion_del_puesto:''
-
-
-
-
-
-
-
-
-
+                apellido_materno: '',
+                rfc: '',
+                curp: '',
+                edad: '',
+                telefono_celular: '',
+                telefono_recados: '',
+                Email: '',
+                clave_sector: '',
+                secretaria_o_ente_dministrativo: '',
+                clave_unidad_administrativa: '',
+                nombre_unidad_administrativa: '',
+                oficina_o_area_de_adscripcion: '',
+                descripcion_del_puesto: ''
             })
         }
+    },
+    mounted() {
+        if (localStorage.nombre){
+            this.form.nombre=localStorage.nombre;
+        }
+        if (localStorage.genero){
+            this.form.genero=localStorage.genero;
+        }
+        if (localStorage.entidad_nacimiento){
+            this.form.entidad_nacimiento=localStorage.entidad_nacimiento;
+        }
+        if (localStorage.nivel_escolaridad){
+            this.form.nivel_escolaridad=localStorage.nivel_escolaridad;
+        }
+        if (localStorage.status_escolar){
+            this.form.status_escolar=localStorage.status_escolar;
+        }
+        if (localStorage.parentesco_con_el_infante){
+            this.form.parentesco_con_el_infante=localStorage.parentesco_con_el_infante;
+        }
+        if (localStorage.estado_civil){
+            this.form.estado_civil=localStorage.estado_civil;
+        }
+        if (localStorage.codigo_postal){
+            this.form.codigo_postal=localStorage.codigo_postal;
+        }
+        if (localStorage.domicilio_particular){
+            this.form.domicilio_particular=localStorage.domicilio_particular;
+        }
+        if (localStorage.numero_direccion){
+            this.form.numero_direccion=localStorage.numero_direccion;
+        }
+        if (localStorage.colonia){
+            this.form.colonia=localStorage.colonia;
+        }
+        if (localStorage.alcaldia_o_municipio){
+            this.form.alcaldia_o_municipio=localStorage.alcaldia_o_municipio;
+        }
+        if (localStorage.telefono_paticular){
+            this.form.telefono_paticular=localStorage.telefono_paticular;
+        }
+        if (localStorage.apellido_paterno){
+            this.form.apellido_paterno=localStorage.apellido_paterno;
+        }
+        if (localStorage.apellido_materno){
+            this.form.apellido_materno=localStorage.apellido_materno;
+        }
+        if (localStorage.rfc){
+            this.form.rfc=localStorage.rfc;
+        }
+        if (localStorage.curp){
+            this.form.curp=localStorage.curp;
+        }
+        if (localStorage.edad){
+            this.form.edad=localStorage.edad;
+        }
+        if (localStorage.telefono_celular){
+            this.form.telefono_celular=localStorage.telefono_celular;
+        }
+        if (localStorage.telefono_recados){
+            this.form.telefono_recados=localStorage.telefono_recados;
+        }
+        if (localStorage.Email){
+            this.form.Email=localStorage.Email;
+        }
+        if (localStorage.clave_sector){
+            this.form.clave_sector=localStorage.clave_sector;
+        }
+        if (localStorage.secretaria_o_ente_dministrativo){
+            this.form.secretaria_o_ente_dministrativo=localStorage.secretaria_o_ente_dministrativo;
+        }
+        if (localStorage.clave_unidad_administrativa){
+            this.form.clave_unidad_administrativa=localStorage.clave_unidad_administrativa;
+        }
+        if (localStorage.nombre_unidad_administrativa){
+            this.form.nombre_unidad_administrativa=localStorage.nombre_unidad_administrativa;
+        }
+        if (localStorage.oficina_o_area_de_adscripcion){
+            this.form.oficina_o_area_de_adscripcion=localStorage.oficina_o_area_de_adscripcion;
+        }
+        if (localStorage.descripcion_del_puesto){
+            this.form.descripcion_del_puesto=localStorage.descripcion_del_puesto;
+        }
+    },
+
+    methods:{
+        persist(){
+            localStorage.nombre=this.form.nombre;
+            localStorage.genero=this.form.genero;
+            localStorage.entidad_nacimiento=this.form.entidad_nacimiento;
+            localStorage.nivel_escolaridad=this.form.nivel_escolaridad;
+            localStorage.status_escolar=this.form.status_escolar;
+            localStorage.parentesco_con_el_infante=this.form.parentesco_con_el_infante;
+            localStorage.estado_civil=this.form.estado_civil;
+            localStorage.codigo_postal=this.form.codigo_postal;
+            localStorage.domicilio_particular=this.form.domicilio_particular;
+            localStorage.numero_direccion=this.form.numero_direccion;
+            localStorage.colonia=this.form.colonia;
+            localStorage.alcaldia_o_municipio=this.form.alcaldia_o_municipio;
+            localStorage.telefono_paticular=this.form.telefono_paticular;
+            localStorage.apellido_paterno=this.form.apellido_paterno;
+            localStorage.apellido_materno=this.form.apellido_materno;
+            localStorage.rfc=this.form.rfc;
+            localStorage.curp=this.form.curp;
+            localStorage.edad=this.form.edad;
+            localStorage.telefono_celular=this.form.telefono_celular;
+            localStorage.telefono_recados=this.form.telefono_recados;
+            localStorage.Email=this.form.Email;
+            localStorage.clave_sector=this.form.clave_sector;
+            localStorage.secretaria_o_ente_dministrativo=this.form.secretaria_o_ente_dministrativo;
+            localStorage.clave_unidad_administrativa=this.form.clave_unidad_administrativa;
+            localStorage.nombre_unidad_administrativa=this.form.nombre_unidad_administrativa;
+            localStorage.oficina_o_area_de_adscripcion=this.form.oficina_o_area_de_adscripcion;
+            localStorage.descripcion_del_puesto=this.form.descripcion_del_puesto;
+
+        }
+
     }
+
 })
 </script>

@@ -40,7 +40,7 @@
                                         <jet-label for="domicilio_laboralo"
                                                    value="Domicilio Laboral(Avenida o calle):"/>
                                         <jet-input id="domicilio_laboralo" type="text" class="mt-1 block w-full"
-                                                   v-model="domicilio_laboralo"
+                                                   v-model="form.domicilio_laboral"
                                                    required
                                                    placeholder="Domicilio Laboral(Avenida o calle)"
                                                    autofocus
@@ -48,10 +48,10 @@
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="numero_ext_int"
+                                        <jet-label for="numero_ext_o_int"
                                                    value="Número (Exterior, Interior, Lote, Manzana, etc.):"/>
-                                        <jet-input id="numero_ext_int" type="text" class="mt-1 block w-full"
-                                                   v-model="numero_ext_int"
+                                        <jet-input id="numero_ext_o_int" type="text" class="mt-1 block w-full"
+                                                   v-model="form.numero_ext_o_int"
                                                    required
                                                    placeholder=" Número (Exterior, Interior, Lote, Manzana, etc.)"
                                                    autofocus
@@ -59,19 +59,19 @@
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="colonia_lab" value="Colonia:"/>
-                                        <jet-input id="colonia_lab" type="text" class="mt-1 block w-full"
-                                                   v-model="colonia_lab"
+                                        <jet-label for="colonia_laboral" value="Colonia:"/>
+                                        <jet-input id="colonia_laboral" type="text" class="mt-1 block w-full"
+                                                   v-model="form.colonia_laboral"
                                                    required
                                                    placeholder="Colonia"
                                                    autofocus
-                                                   autocomplete="colonia_lab"/>
+                                                   autocomplete="colonia laboral"/>
                                     </div>
 
                                     <div class="my-4">
                                         <jet-label for="alcaldia" value="Alcaldía"/>
                                         <jet-input id="alcaldia" type="text" class="mt-1 block w-full"
-                                                   v-model="alcaldia"
+                                                   v-model="form.alcaldia_laboral"
                                                    required
                                                    placeholder="Alcaldía"
                                                    autofocus
@@ -81,7 +81,7 @@
                                     <div class="my-4">
                                         <jet-label for="codogo_postal" value="Código Postal"/>
                                         <jet-input id="codogo_postal" type="text" class="mt-1 block w-full"
-                                                   v-model="codogo_postal"
+                                                   v-model="form.codogo_postal_laboral"
                                                    required
                                                    placeholder="Código Postal"
                                                    autofocus
@@ -92,7 +92,7 @@
                                         <jet-label for="teléfono_laboral"
                                                    value="Teléfono Laboral"/>
                                         <jet-input id="teléfono_laboral" type="text" class="mt-1 block w-full"
-                                                   v-model="teléfono_laboral"
+                                                   v-model="form.telefono_laboral"
                                                    required
                                                    placeholder="Teléfono Laboral"
                                                    autofocus
@@ -104,7 +104,7 @@
                                                    value="Extensión del Teléfono Laboral"/>
                                         <jet-input id="extension_del_reléfono_laboral" type="text"
                                                    class="mt-1 block w-full"
-                                                   v-model="extension_del_reléfono_laboral"
+                                                   v-model="form.extension_del_relefono_laboral"
                                                    required
                                                    placeholder="extension_del_reléfono_laboral"
                                                    autofocus
@@ -114,7 +114,7 @@
                                     <div class="my-4">
                                         <jet-label for="tipo_de_nomina" value="Tipo de Nomina:"/>
                                         <jet-input id="tipo_de_nomina" type="text" class="mt-1 block w-full"
-                                                   v-model="tipo_de_nomina"
+                                                   v-model="form.tipo_de_nomina"
                                                    required
                                                    placeholder="Tipo de Nomina"
                                                    autofocus
@@ -129,7 +129,7 @@
                                     <div class="my-2">
                                         <jet-label for="numero_de_empleado" value="Número de Empleado:"/>
                                         <jet-input id="numero_de_empleado" type="text" class="mt-1 block w-full"
-                                                   v-model="numero_de_empleado"
+                                                   v-model="form.numero_de_empleado"
                                                    required
                                                    placeholder="Número de Empleado"
                                                    autofocus
@@ -141,7 +141,7 @@
                                                    value="Número de Plaza:"/>
                                         <jet-input id="numero_de_plaza" type="text"
                                                    class="mt-1 block w-full"
-                                                   v-model="numero_de_plaza"
+                                                   v-model="form.numero_de_plaza"
                                                    required
                                                    placeholder="numero_de_plaza"
                                                    autofocus
@@ -149,34 +149,38 @@
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="parentesco_con_el_infante"
-                                                   value="Parentesco con la Niña o el Niño:"/>
-                                        <jet-input id="parentesco_con_el_infante" type="text" class="mt-1 block w-full"
-                                                   v-model="parentesco_con_el_niña_o_niño"
+                                        <jet-label for="nivel_salarial"
+                                                   value="Nivel Salarial:"/>
+                                        <jet-input id="nivel_salariale" type="text" class="mt-1 block w-full"
+                                                   v-model="form.nivel_salarial"
                                                    required
+                                                   placeholder="Nivel Salarial"
                                                    autofocus
-                                                   autocomplete="Parentesco con la Niña o el Niño"/>
+                                                   autocomplete="Nivel Salarial"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="domicilio_particular"
-                                                   value="Domicilio particular (avenida o calle):"/>
-                                        <jet-input id="domicilio_particular" type="text" class="mt-1 block w-full"
-                                                   v-model="domicilio_particular"
+                                        <jet-label for="seccion_sindical"
+                                                   value="Sección Sindical:"/>
+                                        <jet-input id="seccion_sindical" type="text" class="mt-1 block w-full"
+                                                   v-model="form.seccion_sindical"
                                                    required
                                                    autofocus
-                                                   autocomplete="domicilio particular"/>
+                                                   autocomplete="seccion sindical"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="numero_d"
-                                                   value="Número (Exterior, Interior, Lote, Manzana etc.):"/>
-                                        <jet-input id="numero_d" type="text" class="mt-1 block w-full"
-                                                   v-model="numero_d"
+                                        <jet-label for="hora_entrada"
+                                                   value="Hora de Entrada a Earorar:"/>
+                                        <jet-input id="hora_entrada" type="text" class="mt-1 block w-full"
+                                                   v-model="form.hora_entrada"
                                                    required
+                                                   data-mdb-toggle="input-toggle-timepicker"
                                                    autofocus
-                                                   autocomplete="Número (Exterior, Interior, Lote, Manzana etc.)"/>
+                                                   autocomplete="hora_entrada"/>
+<!--                                        <Datepicker v-model="date"></Datepicker>-->
                                     </div>
+
 
                                     <div class="my-4">
                                         <jet-label for="colonia"
@@ -351,18 +355,34 @@ import JetLabel from '@/Jetstream/Label.vue'
 import JetInput from '@/Jetstream/Input.vue'
 import JetButton from '@/Jetstream/Button.vue'
 
+
 export default defineComponent({
     components: {
         JetLabel,
         JetInput,
         JetButton,
-        AppLayout
+        AppLayout,
+
+
     },
     data() {
         return {
             form: this.$inertia.form({
-                name: 'Amado Lider Honorable Licenciao Andrés Manuel López Obrador',
-                funcion_real:'',
+                name: 'Su exelencia Sr Licenciao Andrés Manuel López Obrador',
+                funcion_real: '',
+                domicilio_laboral: '',
+                numero_ext_o_int: '',
+                colonia_laboral: '',
+                alcaldia_laboral: '',
+                codogo_postal_laboral: '',
+                telefono_laboral: '',
+                extension_del_relefono_laboral: '',
+                tipo_de_nomina: '',
+                numero_de_empleado: '',
+                numero_de_plaza: '',
+                nivel_salarial: '',
+                seccion_sindical: '',
+                hora_entrada: '',
 
 
             })
