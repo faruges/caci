@@ -105,7 +105,7 @@
                                         <select id="estado_civil" v-model="form.estado_civil"
                                                 class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                             <option :value="form.estado_civil">
-                                                {{form.estado_civil}}
+                                                {{ form.estado_civil }}
                                             </option>
                                             <option v-for="edo_civil in form.estados_civil">
                                                 {{ edo_civil }}
@@ -123,7 +123,7 @@
                                         <select id="Nivel_escolaridad" v-model="form.nivel_escolaridad"
                                                 class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                             <option :value="form.nivel_escolaridad">
-                                               {{form.nivel_escolaridad}}
+                                                {{ form.nivel_escolaridad }}
                                             </option>
                                             <option v-for="nivel_escolar in form.niveles_escolares">
                                                 {{ nivel_escolar }}
@@ -137,7 +137,7 @@
                                         <select id="Nivel_escolaridad" v-model="form.status_escolar"
                                                 class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                             <option :value="form.status_escolar">
-                                                {{form.status_escolar}}
+                                                {{ form.status_escolar }}
                                             </option>
                                             <option v-for="status_escolar in form.status_niveles_escolares">
                                                 {{ status_escolar }}
@@ -150,9 +150,9 @@
                                                    value="Parentesco con la Niña o el Niño:"/>
                                         <select id="parentesco_con_el_infante" v-model="form.parentesco_con_el_infante"
                                                 class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                           <option :value="form.parentesco_con_el_infante">
-                                               {{form.parentesco_con_el_infante}}
-                                           </option>
+                                            <option :value="form.parentesco_con_el_infante">
+                                                {{ form.parentesco_con_el_infante }}
+                                            </option>
                                             <option v-for="parentesco in form.parentescos">
                                                 {{ parentesco }}
                                             </option>
@@ -364,12 +364,14 @@ import JetLabel from '@/Jetstream/Label.vue'
 import JetInput from '@/Jetstream/Input.vue'
 import JetButton from '@/Jetstream/Button.vue'
 
+
 export default defineComponent({
     components: {
         JetLabel,
         JetInput,
         JetButton,
-        AppLayout
+        AppLayout,
+
     },
     data() {
         return {
@@ -409,118 +411,119 @@ export default defineComponent({
         }
     },
     mounted() {
-        if (localStorage.nombre){
-            this.form.nombre=localStorage.nombre;
+        if (localStorage.nombre) {
+            this.form.nombre = localStorage.nombre;
         }
-        if (localStorage.genero){
-            this.form.genero=localStorage.genero;
+        if (localStorage.genero) {
+            this.form.genero = localStorage.genero;
         }
-        if (localStorage.entidad_nacimiento){
-            this.form.entidad_nacimiento=localStorage.entidad_nacimiento;
+        if (localStorage.entidad_nacimiento) {
+            this.form.entidad_nacimiento = localStorage.entidad_nacimiento;
         }
-        if (localStorage.nivel_escolaridad){
-            this.form.nivel_escolaridad=localStorage.nivel_escolaridad;
+        if (localStorage.nivel_escolaridad) {
+            this.form.nivel_escolaridad = localStorage.nivel_escolaridad;
         }
-        if (localStorage.status_escolar){
-            this.form.status_escolar=localStorage.status_escolar;
+        if (localStorage.status_escolar) {
+            this.form.status_escolar = localStorage.status_escolar;
         }
-        if (localStorage.parentesco_con_el_infante){
-            this.form.parentesco_con_el_infante=localStorage.parentesco_con_el_infante;
+        if (localStorage.parentesco_con_el_infante) {
+            this.form.parentesco_con_el_infante = localStorage.parentesco_con_el_infante;
         }
-        if (localStorage.estado_civil){
-            this.form.estado_civil=localStorage.estado_civil;
+        if (localStorage.estado_civil) {
+            this.form.estado_civil = localStorage.estado_civil;
         }
-        if (localStorage.codigo_postal){
-            this.form.codigo_postal=localStorage.codigo_postal;
+        if (localStorage.codigo_postal) {
+            this.form.codigo_postal = localStorage.codigo_postal;
         }
-        if (localStorage.domicilio_particular){
-            this.form.domicilio_particular=localStorage.domicilio_particular;
+        if (localStorage.domicilio_particular) {
+            this.form.domicilio_particular = localStorage.domicilio_particular;
         }
-        if (localStorage.numero_direccion){
-            this.form.numero_direccion=localStorage.numero_direccion;
+        if (localStorage.numero_direccion) {
+            this.form.numero_direccion = localStorage.numero_direccion;
         }
-        if (localStorage.colonia){
-            this.form.colonia=localStorage.colonia;
+        if (localStorage.colonia) {
+            this.form.colonia = localStorage.colonia;
         }
-        if (localStorage.alcaldia_o_municipio){
-            this.form.alcaldia_o_municipio=localStorage.alcaldia_o_municipio;
+        if (localStorage.alcaldia_o_municipio) {
+            this.form.alcaldia_o_municipio = localStorage.alcaldia_o_municipio;
         }
-        if (localStorage.telefono_paticular){
-            this.form.telefono_paticular=localStorage.telefono_paticular;
+        if (localStorage.telefono_paticular) {
+            this.form.telefono_paticular = localStorage.telefono_paticular;
         }
-        if (localStorage.apellido_paterno){
-            this.form.apellido_paterno=localStorage.apellido_paterno;
+        if (localStorage.apellido_paterno) {
+            this.form.apellido_paterno = localStorage.apellido_paterno;
         }
-        if (localStorage.apellido_materno){
-            this.form.apellido_materno=localStorage.apellido_materno;
+        if (localStorage.apellido_materno) {
+            this.form.apellido_materno = localStorage.apellido_materno;
         }
-        if (localStorage.rfc){
-            this.form.rfc=localStorage.rfc;
+        if (localStorage.rfc) {
+            this.form.rfc = localStorage.rfc;
         }
-        if (localStorage.curp){
-            this.form.curp=localStorage.curp;
+        if (localStorage.curp) {
+            this.form.curp = localStorage.curp;
         }
-        if (localStorage.edad){
-            this.form.edad=localStorage.edad;
+        if (localStorage.edad) {
+            this.form.edad = localStorage.edad;
         }
-        if (localStorage.telefono_celular){
-            this.form.telefono_celular=localStorage.telefono_celular;
+        if (localStorage.telefono_celular) {
+            this.form.telefono_celular = localStorage.telefono_celular;
         }
-        if (localStorage.telefono_recados){
-            this.form.telefono_recados=localStorage.telefono_recados;
+        if (localStorage.telefono_recados) {
+            this.form.telefono_recados = localStorage.telefono_recados;
         }
-        if (localStorage.Email){
-            this.form.Email=localStorage.Email;
+        if (localStorage.Email) {
+            this.form.Email = localStorage.Email;
         }
-        if (localStorage.clave_sector){
-            this.form.clave_sector=localStorage.clave_sector;
+        if (localStorage.clave_sector) {
+            this.form.clave_sector = localStorage.clave_sector;
         }
-        if (localStorage.secretaria_o_ente_dministrativo){
-            this.form.secretaria_o_ente_dministrativo=localStorage.secretaria_o_ente_dministrativo;
+        if (localStorage.secretaria_o_ente_dministrativo) {
+            this.form.secretaria_o_ente_dministrativo = localStorage.secretaria_o_ente_dministrativo;
         }
-        if (localStorage.clave_unidad_administrativa){
-            this.form.clave_unidad_administrativa=localStorage.clave_unidad_administrativa;
+        if (localStorage.clave_unidad_administrativa) {
+            this.form.clave_unidad_administrativa = localStorage.clave_unidad_administrativa;
         }
-        if (localStorage.nombre_unidad_administrativa){
-            this.form.nombre_unidad_administrativa=localStorage.nombre_unidad_administrativa;
+        if (localStorage.nombre_unidad_administrativa) {
+            this.form.nombre_unidad_administrativa = localStorage.nombre_unidad_administrativa;
         }
-        if (localStorage.oficina_o_area_de_adscripcion){
-            this.form.oficina_o_area_de_adscripcion=localStorage.oficina_o_area_de_adscripcion;
+        if (localStorage.oficina_o_area_de_adscripcion) {
+            this.form.oficina_o_area_de_adscripcion = localStorage.oficina_o_area_de_adscripcion;
         }
-        if (localStorage.descripcion_del_puesto){
-            this.form.descripcion_del_puesto=localStorage.descripcion_del_puesto;
+        if (localStorage.descripcion_del_puesto) {
+            this.form.descripcion_del_puesto = localStorage.descripcion_del_puesto;
         }
     },
 
-    methods:{
-        persist(){
-            localStorage.nombre=this.form.nombre;
-            localStorage.genero=this.form.genero;
-            localStorage.entidad_nacimiento=this.form.entidad_nacimiento;
-            localStorage.nivel_escolaridad=this.form.nivel_escolaridad;
-            localStorage.status_escolar=this.form.status_escolar;
-            localStorage.parentesco_con_el_infante=this.form.parentesco_con_el_infante;
-            localStorage.estado_civil=this.form.estado_civil;
-            localStorage.codigo_postal=this.form.codigo_postal;
-            localStorage.domicilio_particular=this.form.domicilio_particular;
-            localStorage.numero_direccion=this.form.numero_direccion;
-            localStorage.colonia=this.form.colonia;
-            localStorage.alcaldia_o_municipio=this.form.alcaldia_o_municipio;
-            localStorage.telefono_paticular=this.form.telefono_paticular;
-            localStorage.apellido_paterno=this.form.apellido_paterno;
-            localStorage.apellido_materno=this.form.apellido_materno;
-            localStorage.rfc=this.form.rfc;
-            localStorage.curp=this.form.curp;
-            localStorage.edad=this.form.edad;
-            localStorage.telefono_celular=this.form.telefono_celular;
-            localStorage.telefono_recados=this.form.telefono_recados;
-            localStorage.Email=this.form.Email;
-            localStorage.clave_sector=this.form.clave_sector;
-            localStorage.secretaria_o_ente_dministrativo=this.form.secretaria_o_ente_dministrativo;
-            localStorage.clave_unidad_administrativa=this.form.clave_unidad_administrativa;
-            localStorage.nombre_unidad_administrativa=this.form.nombre_unidad_administrativa;
-            localStorage.oficina_o_area_de_adscripcion=this.form.oficina_o_area_de_adscripcion;
-            localStorage.descripcion_del_puesto=this.form.descripcion_del_puesto;
+    methods: {
+        persist() {
+            localStorage.nombre = this.form.nombre;
+            localStorage.genero = this.form.genero;
+            localStorage.entidad_nacimiento = this.form.entidad_nacimiento;
+            localStorage.nivel_escolaridad = this.form.nivel_escolaridad;
+            localStorage.status_escolar = this.form.status_escolar;
+            localStorage.parentesco_con_el_infante = this.form.parentesco_con_el_infante;
+            localStorage.estado_civil = this.form.estado_civil;
+            localStorage.codigo_postal = this.form.codigo_postal;
+            localStorage.domicilio_particular = this.form.domicilio_particular;
+            localStorage.numero_direccion = this.form.numero_direccion;
+            localStorage.colonia = this.form.colonia;
+            localStorage.alcaldia_o_municipio = this.form.alcaldia_o_municipio;
+            localStorage.telefono_paticular = this.form.telefono_paticular;
+            localStorage.apellido_paterno = this.form.apellido_paterno;
+            localStorage.apellido_materno = this.form.apellido_materno;
+            localStorage.rfc = this.form.rfc;
+            localStorage.curp = this.form.curp;
+            localStorage.edad = this.form.edad;
+            localStorage.telefono_celular = this.form.telefono_celular;
+            localStorage.telefono_recados = this.form.telefono_recados;
+            localStorage.Email = this.form.Email;
+            localStorage.clave_sector = this.form.clave_sector;
+            localStorage.secretaria_o_ente_dministrativo = this.form.secretaria_o_ente_dministrativo;
+            localStorage.clave_unidad_administrativa = this.form.clave_unidad_administrativa;
+            localStorage.nombre_unidad_administrativa = this.form.nombre_unidad_administrativa;
+            localStorage.oficina_o_area_de_adscripcion = this.form.oficina_o_area_de_adscripcion;
+            localStorage.descripcion_del_puesto = this.form.descripcion_del_puesto;
+
 
         }
 

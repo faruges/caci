@@ -165,61 +165,61 @@
                                         <jet-input id="seccion_sindical" type="text" class="mt-1 block w-full"
                                                    v-model="form.seccion_sindical"
                                                    required
+                                                   placeholder="Sección Sindical"
                                                    autofocus
                                                    autocomplete="seccion sindical"/>
                                     </div>
 
                                     <div class="my-4">
                                         <jet-label for="hora_entrada"
-                                                   value="Hora de Entrada a Earorar:"/>
-                                        <jet-input id="hora_entrada" type="text" class="mt-1 block w-full"
-                                                   v-model="form.hora_entrada"
-                                                   required
-                                                   data-mdb-toggle="input-toggle-timepicker"
-                                                   autofocus
-                                                   autocomplete="hora_entrada"/>
-<!--                                        <Datepicker v-model="date"></Datepicker>-->
+                                                   value="Hora de Entrada a Laborar:"/>
+                                        {{ time.hours }}:{{ time.minutes }}
+                                        <Datepicker v-model="time" timePicker/>
                                     </div>
 
 
                                     <div class="my-4">
-                                        <jet-label for="colonia"
-                                                   value="Colonia:"/>
-                                        <jet-input id="colonia" type="text" class="mt-1 block w-full"
-                                                   v-model="colonia"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="Colonia"/>
+                                        <jet-label for="hora_salida"
+                                                   value="Hora de salida laboral:"/>
+                                        {{ time_salida.hours }}:{{ time_salida.minutes }}
+                                        <Datepicker v-model="time_salida" timePicker/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="alcaldia_o_municipio"
-                                                   value="Alcaldía o Municipio:"/>
-                                        <jet-input id="alcaldia_o_municipio" type="text" class="mt-1 block w-full"
-                                                   v-model="alcaldia_o_municipio"
+                                        <jet-label for="dias_laborales"
+                                                   value="Días Laborales:"/>
+                                        <jet-input id="dias_laborales" type="text" class="mt-1 block w-full"
+                                                   v-model="form.dias_laborales"
                                                    required
+                                                   placeholder="Días Laborales"
                                                    autofocus
-                                                   autocomplete="alcaldia o municipio"/>
+                                                   autocomplete="dias lñaborales"/>
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="codigo_postal"
-                                                   value="Código Postal:"/>
-                                        <jet-input id="codigo_postal" type="text" class="mt-1 block w-full"
-                                                   v-model="codigo_postal"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="Código postal"/>
+                                        <jet-label for="tiene_segundo_empleo"
+                                                   value="¿Cuenta con un segundo empleo?:"/>
+
+                                        <input class="mx-2" type="radio" id="si" value="Si"
+                                               v-model="form.tiene_segundo_empleo"/>
+                                        <label for="si">Si</label>
+
+
+                                        <input class="mx-2" type="radio" id="no" value="No"
+                                               v-model="form.tiene_segundo_empleo"/>
+                                        <label for="no">No</label>
+
                                     </div>
 
                                     <div class="my-4">
-                                        <jet-label for="telefono_particular"
-                                                   value="Teléfono Particular:"/>
+                                        <jet-label for="mencione_donde"
+                                                   value="Mencione Dónde:"/>
                                         <jet-input id="telefono_particular" type="text" class="mt-1 block w-full"
-                                                   v-model="telefono_paticular"
+                                                   v-model="form.mencione_donde"
                                                    required
+                                                   placeholder="Mencione Dónde"
                                                    autofocus
-                                                   autocomplete="Telefono particular"/>
+                                                   autocomplete="Mencione Dónde"/>
                                     </div>
 
                                 </div>
@@ -354,6 +354,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import JetLabel from '@/Jetstream/Label.vue'
 import JetInput from '@/Jetstream/Input.vue'
 import JetButton from '@/Jetstream/Button.vue'
+import {ref} from 'vue';
 
 
 export default defineComponent({
@@ -383,10 +384,29 @@ export default defineComponent({
                 nivel_salarial: '',
                 seccion_sindical: '',
                 hora_entrada: '',
-
+                dias_laborales: '',
+                tiene_segundo_empleo: 'No',
+                mencione_donde:''
 
             })
         }
+    },
+    setup() {
+        const time = ref({
+            hora: new Date().getHours(),
+            minutos: new Date().getMinutes()
+        });
+
+        const time_salida = ref({
+            hora: new Date().getHours(),
+            minutos: new Date().getMinutes()
+        });
+
+        return {
+            time,
+            time_salida
+        }
     }
+
 })
 </script>
