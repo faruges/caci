@@ -21410,13 +21410,13 @@ __webpack_require__.r(__webpack_exports__);
         nombre: ' Andrés Manuel López Obrador',
         genero: '',
         entidad_nacimiento: '',
-        niveles_escolares: ['Primaria', 'Secundaria', 'Media superior', 'Superior'],
+        niveles_escolares: ['sin estudios', 'Primaria', 'Secundaria', 'Media superior', 'Superior', 'Maestria', 'Doctorado'],
         nivel_escolaridad: 'Seleccione una opción',
         status_niveles_escolares: ['En curso', 'Trunco', 'Concluido'],
         status_escolar: 'Seleccione una opción',
-        parentescos: ['hijo', 'hija', 'hermana', 'hermano', 'sobrino', 'sobrina', 'prima', 'primo'],
+        parentescos: ['MADRE', 'PADRE', 'ABUELA', 'ABUELO', 'TÍA', ' TÍO', 'PERSONA TUTORA LEGAL'],
         parentesco_con_el_infante: 'Seleccione una opción',
-        estados_civil: ['soltero(a)', 'casado(a)', 'divorciado(a)'],
+        estados_civil: ['soltero(a)', 'casado(a)', 'Viudo(a)', 'Unión libre', 'divorciado(a)'],
         estado_civil: 'Seleccione una opción',
         codigo_postal: '',
         domicilio_particular: '',
@@ -21632,14 +21632,24 @@ __webpack_require__.r(__webpack_exports__);
         nivel_salarial: '',
         seccion_sindical: '',
         hora_entrada: '',
-        dias_laborales: '',
-        tiene_segundo_empleo: 'No',
-        mencione_donde: ''
+        dias_laborales: 'Seleccione una Opción',
+        //aqi me quedé        tiene_segundo_empleo: 'No',
+        mencione_donde: '',
+        dias_laborales_list: ['LUNES A VIERNES', 'SÁBADOS, DOMINGOS Y DÍAS FESTIVOS', 'LUNES A DOMINGO'],
+        dias_laborales_segundo_empleo: 'Seleccione una Opción',
+        telefono_laboral_segundo_empleo: '',
+        extension_telefono_laboral_segundo_empleo: '',
+        domicilio_laborl_asegundo_empleo: '',
+        numero_domicilio_segundo_empleo: '',
+        codigo_postal_segundo_empleo: '',
+        Colonia_segundo_empleo: '',
+        alcaldia_o_municipio_segundo_empleo: '',
+        colonia_segundo_empleo: ''
       })
     };
   },
   setup: function setup() {
-    var time = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
+    var time_entrada = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
       hora: new Date().getHours(),
       minutos: new Date().getMinutes()
     });
@@ -21647,10 +21657,161 @@ __webpack_require__.r(__webpack_exports__);
       hora: new Date().getHours(),
       minutos: new Date().getMinutes()
     });
+    var time_entrada_segundo_empleo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
+      hora: new Date().getHours(),
+      minutos: new Date().getMinutes()
+    });
+    var time_salida_segundo_empleo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
+      hora: new Date().getHours(),
+      minutos: new Date().getMinutes()
+    });
     return {
-      time: time,
-      time_salida: time_salida
+      time_entrada: time_entrada,
+      time_salida: time_salida,
+      time_entrada_segundo_empleo: time_entrada_segundo_empleo,
+      time_salida_segundo_empleo: time_salida_segundo_empleo
     };
+  },
+  mounted: function mounted() {
+    if (localStorage.funcion_real) {
+      this.form.funcion_real = localStorage.funcion_real;
+    }
+
+    if (localStorage.domicilio_laboral) {
+      this.form.domicilio_laboral = localStorage.domicilio_laboral;
+    }
+
+    if (localStorage.numero_ext_o_int) {
+      this.form.numero_ext_o_int = localStorage.numero_ext_o_int;
+    }
+
+    if (localStorage.colonia_laboral) {
+      this.form.colonia_laboral = localStorage.colonia_laboral;
+    }
+
+    if (localStorage.alcaldia_laboral) {
+      this.form.alcaldia_laboral = localStorage.alcaldia_laboral;
+    }
+
+    if (localStorage.codogo_postal_laboral) {
+      this.form.codogo_postal_laboral = localStorage.codogo_postal_laboral;
+    }
+
+    if (localStorage.telefono_laboral) {
+      this.form.telefono_laboral = localStorage.telefono_laboral;
+    }
+
+    if (localStorage.extension_del_relefono_laboral) {
+      this.form.extension_del_relefono_laboral = localStorage.extension_del_relefono_laboral;
+    }
+
+    if (localStorage.tipo_de_nomina) {
+      this.form.tipo_de_nomina = localStorage.tipo_de_nomina;
+    }
+
+    if (localStorage.numero_de_empleado) {
+      this.form.numero_de_empleado = localStorage.numero_de_empleado;
+    }
+
+    if (localStorage.numero_de_plaza) {
+      this.form.numero_de_plaza = localStorage.numero_de_plaza;
+    }
+
+    if (localStorage.nivel_salarial) {
+      this.form.nivel_salarial = localStorage.nivel_salarial;
+    }
+
+    if (localStorage.seccion_sindical) {
+      this.form.seccion_sindical = localStorage.seccion_sindical;
+    }
+
+    if (localStorage.hora_entrada) {
+      this.form.hora_entrada = localStorage.hora_entrada;
+    }
+
+    if (localStorage.dias_laborales) {
+      this.form.dias_laborales = localStorage.dias_laborales;
+    }
+
+    if (localStorage.tiene_segundo_empleo) {
+      this.form.tiene_segundo_empleo = localStorage.tiene_segundo_empleo;
+    }
+
+    if (localStorage.mencione_donde) {
+      this.form.mencione_donde = localStorage.mencione_donde;
+    }
+
+    if (localStorage.dias_laborales_segundo_empleo) {
+      this.form.dias_laborales_segundo_empleo = localStorage.dias_laborales_segundo_empleo;
+    }
+
+    if (localStorage.telefono_laboral_segundo_empleo) {
+      this.form.telefono_laboral_segundo_empleo = localStorage.telefono_laboral_segundo_empleo;
+    }
+
+    if (localStorage.extension_telefono_laboral_segundo_empleo) {
+      this.form.extension_telefono_laboral_segundo_empleo = localStorage.extension_telefono_laboral_segundo_empleo;
+    }
+
+    if (localStorage.domicilio_laborl_asegundo_empleo) {
+      this.form.domicilio_laborl_asegundo_empleo = localStorage.domicilio_laborl_asegundo_empleo;
+    }
+
+    if (localStorage.numero_domicilio_segundo_empleo) {
+      this.form.numero_domicilio_segundo_empleo = localStorage.numero_domicilio_segundo_empleo;
+    }
+
+    if (localStorage.codigo_postal_segundo_empleo) {
+      this.form.codigo_postal_segundo_empleo = localStorage.codigo_postal_segundo_empleo;
+    }
+
+    if (localStorage.Colonia_segundo_empleo) {
+      this.form.Colonia_segundo_empleo = localStorage.Colonia_segundo_empleo;
+    }
+
+    if (localStorage.alcaldia_o_municipio_segundo_empleo) {
+      this.form.alcaldia_o_municipio_segundo_empleo = localStorage.alcaldia_o_municipio_segundo_empleo;
+    }
+
+    if (localStorage.colonia_segundo_empleo) {
+      this.form.oficina_o_area_de_adscripcion = localStorage.oficina_o_area_de_adscripcion;
+    }
+
+    if (localStorage.descripcion_del_puesto) {
+      this.form.descripcion_del_puesto = localStorage.descripcion_del_puesto;
+    }
+  },
+  methods: {
+    persist: function persist() {
+      localStorage.funcion_real = this.form.funcion_real;
+      localStorage.domicilio_laboral = this.form.domicilio_laboral;
+      localStorage.numero_ext_o_int = this.form.numero_ext_o_int;
+      localStorage.colonia_laboral = this.form.colonia_laboral;
+      localStorage.alcaldia_laboral = this.form.alcaldia_laboral;
+      localStorage.codogo_postal_laboral = this.form.codogo_postal_laboral;
+      localStorage.telefono_laboral = this.form.telefono_laboral;
+      localStorage.extension_del_relefono_laboral = this.form.extension_del_relefono_laboral;
+      localStorage.tipo_de_nomina = this.form.tipo_de_nomina;
+      localStorage.numero_de_empleado = this.form.numero_de_empleado;
+      localStorage.numero_de_plaza = this.form.numero_de_plaza;
+      localStorage.nivel_salarial = this.form.nivel_salarial;
+      localStorage.seccion_sindical = this.form.seccion_sindical;
+      localStorage.hora_entrada = this.form.hora_entrada;
+      localStorage.dias_laborales = this.form.dias_laborales;
+      localStorage.tiene_segundo_empleo = this.form.tiene_segundo_empleo; //aqui me quedo
+
+      localStorage.curp = this.form.curp;
+      localStorage.edad = this.form.edad;
+      localStorage.telefono_celular = this.form.telefono_celular;
+      localStorage.telefono_recados = this.form.telefono_recados;
+      localStorage.Email = this.form.Email;
+      localStorage.clave_sector = this.form.clave_sector;
+      localStorage.secretaria_o_ente_dministrativo = this.form.secretaria_o_ente_dministrativo;
+      localStorage.clave_unidad_administrativa = this.form.clave_unidad_administrativa;
+      localStorage.nombre_unidad_administrativa = this.form.nombre_unidad_administrativa;
+      localStorage.oficina_o_area_de_adscripcion = this.form.oficina_o_area_de_adscripcion;
+      localStorage.descripcion_del_puesto = this.form.descripcion_del_puesto;
+    }
   }
 }));
 
@@ -27175,39 +27336,38 @@ var _hoisted_27 = {
 var _hoisted_28 = {
   "class": "my-4"
 };
-var _hoisted_29 = {
+var _hoisted_29 = ["value"];
+var _hoisted_30 = {
   "class": "my-4"
 };
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "si"
 }, "Si", -1
 /* HOISTED */
 );
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "no"
 }, "No", -1
 /* HOISTED */
 );
 
-var _hoisted_32 = {
-  "class": "my-4"
-};
 var _hoisted_33 = {
-  "class": "p-6"
+  key: 0,
+  "class": "my-4"
 };
 var _hoisted_34 = {
-  "class": "ml-3 mr-3"
+  "class": "p-6"
 };
 var _hoisted_35 = {
-  "class": "my-2"
+  "class": "ml-3 mr-3"
 };
 var _hoisted_36 = {
-  "class": "my-4"
+  key: 0
 };
 var _hoisted_37 = {
-  "class": "my-4"
+  "class": "my-2"
 };
 var _hoisted_38 = {
   "class": "my-4"
@@ -27221,20 +27381,36 @@ var _hoisted_40 = {
 var _hoisted_41 = {
   "class": "my-4"
 };
-var _hoisted_42 = {
-  "class": "my-4"
-};
+var _hoisted_42 = ["value"];
 var _hoisted_43 = {
   "class": "my-4"
 };
 var _hoisted_44 = {
+  "class": "my-4"
+};
+var _hoisted_45 = {
+  "class": "my-4"
+};
+var _hoisted_46 = {
+  "class": "my-4"
+};
+var _hoisted_47 = {
+  "class": "my-4"
+};
+var _hoisted_48 = {
+  "class": "my-4"
+};
+var _hoisted_49 = {
+  "class": "my-4"
+};
+var _hoisted_50 = {
   "class": "my-12"
 };
-var _hoisted_45 = ["href"];
+var _hoisted_51 = ["href"];
 
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Atras ");
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Atras ");
 
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Guardar ");
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Guardar ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
@@ -27480,12 +27656,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "hora_entrada",
         value: "Hora de Entrada a Laborar:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.time.hours) + ":" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.time.minutes) + " ", 1
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.time_entrada.hours) + ":" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.time_entrada.minutes) + " ", 1
       /* TEXT */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
-        modelValue: _ctx.time,
+        modelValue: _ctx.time_entrada,
         "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-          return _ctx.time = $event;
+          return _ctx.time_entrada = $event;
         }),
         timePicker: ""
       }, null, 8
@@ -27506,21 +27682,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "dias_laborales",
         value: "Días Laborales:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "dias_laborales",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.form.dias_laborales,
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        id: "Nivel_escolaridad",
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
           return _ctx.form.dias_laborales = $event;
         }),
-        required: "",
-        placeholder: "Días Laborales",
-        autofocus: "",
-        autocomplete: "dias lñaborales"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "class": "border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+        value: _ctx.form.dias_laborales
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.dias_laborales), 9
+      /* TEXT, PROPS */
+      , _hoisted_29), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.form.dias_laborales_list, function (dias_laborales) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(dias_laborales), 1
+        /* TEXT */
+        );
+      }), 256
+      /* UNKEYED_FRAGMENT */
+      ))], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.form.dias_laborales]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "tiene_segundo_empleo",
         value: "¿Cuenta con un segundo empleo?:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -27533,7 +27713,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.form.tiene_segundo_empleo]]), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.form.tiene_segundo_empleo]]), _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "class": "mx-2",
         type: "radio",
         id: "no",
@@ -27543,11 +27723,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.form.tiene_segundo_empleo]]), _hoisted_31]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.form.tiene_segundo_empleo]]), _hoisted_32]), _ctx.form.tiene_segundo_empleo == 'Si' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "mencione_donde",
         value: "Mencione Dónde:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "telefono_particular",
+        id: "mencione_donde",
         type: "text",
         "class": "mt-1 block w-full",
         modelValue: _ctx.form.mencione_donde,
@@ -27560,168 +27740,190 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         autocomplete: "Mencione Dónde"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "telefono_celular",
-        value: "Teléfono Celular:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "telefono_celular",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.telefono_celular,
+      , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_ctx.form.tiene_segundo_empleo == 'Si' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "hora_entrada_seg_empleo",
+        value: "Hora de Entrada a Laborar al Segundo Empleo:"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.time_entrada_segundo_empleo.hours) + ":" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.time_entrada_segundo_empleo.minutes) + " ", 1
+      /* TEXT */
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+        modelValue: _ctx.time_entrada_segundo_empleo,
         "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
-          return _ctx.telefono_celular = $event;
+          return _ctx.time_entrada_segundo_empleo = $event;
         }),
-        required: "",
-        autofocus: "",
-        autocomplete: "Teléfono Celular"
+        timePicker: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "telefono_recados",
-        value: " Teléfono para Recados:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "telefono_recados",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.telefono_recados,
+      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "hora_entrada_seg_empleo",
+        value: "Hora de Salida de Laborar al Segundo Empleo:"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.time_salida_segundo_empleo.hours) + ":" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.time_salida_segundo_empleo.minutes) + " ", 1
+      /* TEXT */
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+        modelValue: _ctx.time_salida_segundo_empleo,
         "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
-          return _ctx.telefono_recados = $event;
+          return _ctx.time_salida_segundo_empleo = $event;
         }),
-        required: "",
-        autofocus: "",
-        autocomplete: " Teléfono para Recados"
+        timePicker: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "Email",
-        value: "Correo Electrónico:"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "Email",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: _ctx.Email,
+      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "dias_laborales",
+        value: "Días Laborales del Segundo Empleo:"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        id: "Nivel_escolaridad",
         "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
-          return _ctx.Email = $event;
+          return _ctx.form.dias_laborales_segundo_empleo = $event;
         }),
-        required: "",
-        autofocus: "",
-        autocomplete: "Email"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "clave_sector",
-        value: "Clave de Sector:"
+        "class": "border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+        value: _ctx.form.dias_laborales_segundo_empleo
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.dias_laborales_segundo_empleo), 9
+      /* TEXT, PROPS */
+      , _hoisted_42), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.form.dias_laborales_list, function (dias_laborales) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(dias_laborales), 1
+        /* TEXT */
+        );
+      }), 256
+      /* UNKEYED_FRAGMENT */
+      ))], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.form.dias_laborales_segundo_empleo]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "telefono_laboral_seg_empleo",
+        value: "Teléfono Laboral del Segundo Empleo:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "clave_sector",
+        id: "telefono_laboral_seg_empleo",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.clave_sector,
+        modelValue: _ctx.form.telefono_laboral_segundo_empleo,
         "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
-          return _ctx.clave_sector = $event;
+          return _ctx.form.telefono_laboral_segundo_empleo = $event;
         }),
         required: "",
+        placeholder: "Teléfono Laboral del Segundo Empleo",
         autofocus: "",
-        autocomplete: "Clave de Sector"
+        autocomplete: "Teléfono Laboral del Segundo Empleo"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "secretaria_o_ente_dministrativo",
-        value: "Secretaría o Ente Administrativo:"
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "telefono_laboral_seg_empleo",
+        value: "Extensión del teléfono laboral del segundo empleo:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "secretaria_o_ente_dministrativo",
+        id: "telefono_laboral_seg_empleo",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.secretaria_o_ente_dministrativo,
+        modelValue: _ctx.form.extension_telefono_laboral_segundo_empleo,
         "onUpdate:modelValue": _cache[23] || (_cache[23] = function ($event) {
-          return _ctx.secretaria_o_ente_dministrativo = $event;
+          return _ctx.form.extension_telefono_laboral_segundo_empleo = $event;
         }),
         required: "",
+        placeholder: "Extensión del número telefónico del trabajo sin guiones o espacios.",
         autofocus: "",
-        autocomplete: "SECRETARÍA O ENTE ADMINISTRATIVO"
+        autocomplete: "Teléfono Laboral del Segundo Empleo"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "clave_unidad_administrativa",
-        value: "Clave de la Unidad Administrativa:"
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "domicilio_laboral_segundo_empleo",
+        value: " Domicilio Laborla (Avenida o Calle):"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "clave_unidad_administrativa",
+        id: "domicilio_laboral_segundo_empleo",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.clave_unidad_administrativa,
+        modelValue: _ctx.form.domicilio_laborl_asegundo_empleo,
         "onUpdate:modelValue": _cache[24] || (_cache[24] = function ($event) {
-          return _ctx.clave_unidad_administrativa = $event;
+          return _ctx.form.domicilio_laborl_asegundo_empleo = $event;
         }),
         required: "",
+        placeholder: "Nombre de la avenida, calle, etc .",
         autofocus: "",
-        autocomplete: "Clave de la Unidad Administrativa"
+        autocomplete: "Domicilio"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "nombre_unidad_administrativa",
-        value: "Nombre de la Unidad Administrativa:"
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "numero_domicilio_segundo_empleo",
+        value: "Número (Exterior, Interior, Lote, Manzana, etc.):"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "nombre_unidad_administrativa",
+        id: "numero_domicilio_segundo_empleo",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.nombre_unidad_administrativa,
+        modelValue: _ctx.form.numero_domicilio_segundo_empleo,
         "onUpdate:modelValue": _cache[25] || (_cache[25] = function ($event) {
-          return _ctx.nombre_unidad_administrativa = $event;
+          return _ctx.form.numero_domicilio_segundo_empleo = $event;
         }),
         required: "",
+        placeholder: "Número (Exterior, Interior, Lote, Manzana, etc.)",
         autofocus: "",
-        autocomplete: "Nombre de la Unidad Administrativa"
+        autocomplete: "Numero domicilio"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "oficina_o_area_de_adscripcion",
-        value: "Oficina o Área de Adscripción:"
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "Código_postal_segundo_empleo",
+        value: "Código postal:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "oficina_o_area_de_adscripcion",
+        id: "Código_postal_segundo_empleo",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.oficina_o_area_de_adscripcion,
+        modelValue: _ctx.form.codigo_postal_segundo_empleo,
         "onUpdate:modelValue": _cache[26] || (_cache[26] = function ($event) {
-          return _ctx.oficina_o_area_de_adscripcion = $event;
+          return _ctx.form.codigo_postal_segundo_empleo = $event;
         }),
         required: "",
+        placeholder: "Código Postal",
         autofocus: "",
-        autocomplete: "oficina_o_area_de_adscripcion"
+        autocomplete: "Código_postal_segundo_emple"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "descripcion_del_puesto",
-        value: "Descripción del puesto:"
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "Colonia_segundo_empleo",
+        value: "Colonia:"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "descripcion_del_puesto",
+        id: "Colonia_segundo_empleo",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.descripcion_del_puesto,
+        modelValue: _ctx.form.colonia_segundo_empleo,
         "onUpdate:modelValue": _cache[27] || (_cache[27] = function ($event) {
-          return _ctx.descripcion_del_puesto = $event;
+          return _ctx.form.colonia_segundo_empleo = $event;
         }),
         required: "",
+        placeholder: "Código postal del domicilio donde labora el trabajador (a).",
         autofocus: "",
-        autocomplete: "descripcion_del_puesto"
+        autocomplete: "Colonia_segundo_empleo"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "Alcaldía_o_municipio_segundo_empleo",
+        value: "Nombre de la alcaldía donde esta ubicado el domicilio laboral::"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "Alcaldía_o_municipio_segundo_empleo",
+        type: "text",
+        "class": "mt-1 block w-full",
+        modelValue: _ctx.form.alcaldia_o_municipio_segundo_empleo,
+        "onUpdate:modelValue": _cache[28] || (_cache[28] = function ($event) {
+          return _ctx.form.alcaldia_o_municipio_segundo_empleo = $event;
+        }),
+        required: "",
+        placeholder: "Alcaldía o municipio",
+        autofocus: "",
+        autocomplete: "Colonia_segundo_empleo"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
         href: _ctx.route('datosTutor.create')
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
         "class": "bg-blue-600 mx-8"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_46];
+          return [_hoisted_52];
         }),
         _: 1
         /* STABLE */
 
       })], 8
       /* PROPS */
-      , _hoisted_45), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+      , _hoisted_51), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
         "class": "bg-blue-600 mx-8"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_47];
+          return [_hoisted_53];
         }),
         _: 1
         /* STABLE */

@@ -173,8 +173,8 @@
                                     <div class="my-4">
                                         <jet-label for="hora_entrada"
                                                    value="Hora de Entrada a Laborar:"/>
-                                        {{ time.hours }}:{{ time.minutes }}
-                                        <Datepicker v-model="time" timePicker/>
+                                        {{ time_entrada.hours }}:{{ time_entrada.minutes }}
+                                        <Datepicker v-model="time_entrada" timePicker/>
                                     </div>
 
 
@@ -188,12 +188,15 @@
                                     <div class="my-4">
                                         <jet-label for="dias_laborales"
                                                    value="Días Laborales:"/>
-                                        <jet-input id="dias_laborales" type="text" class="mt-1 block w-full"
-                                                   v-model="form.dias_laborales"
-                                                   required
-                                                   placeholder="Días Laborales"
-                                                   autofocus
-                                                   autocomplete="dias lñaborales"/>
+                                        <select id="Nivel_escolaridad" v-model="form.dias_laborales"
+                                                class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                            <option :value="form.dias_laborales">
+                                                {{ form.dias_laborales }}
+                                            </option>
+                                            <option v-for="dias_laborales in form.dias_laborales_list">
+                                                {{ dias_laborales }}
+                                            </option>
+                                        </select>
                                     </div>
 
                                     <div class="my-4">
@@ -211,10 +214,10 @@
 
                                     </div>
 
-                                    <div class="my-4">
+                                    <div v-if="form.tiene_segundo_empleo=='Si'" class="my-4">
                                         <jet-label for="mencione_donde"
                                                    value="Mencione Dónde:"/>
-                                        <jet-input id="telefono_particular" type="text" class="mt-1 block w-full"
+                                        <jet-input id="mencione_donde" type="text" class="mt-1 block w-full"
                                                    v-model="form.mencione_donde"
                                                    required
                                                    placeholder="Mencione Dónde"
@@ -228,100 +231,129 @@
 
                             <div class="p-6">
                                 <div class="ml-3 mr-3">
-                                    <div class="my-2">
-                                        <jet-label for="telefono_celular" value="Teléfono Celular:"/>
-                                        <jet-input id="telefono_celular" type="text" class="mt-1 block w-full"
-                                                   v-model="telefono_celular"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="Teléfono Celular"/>
-                                    </div>
+                                    <div v-if="form.tiene_segundo_empleo=='Si'">
+                                        <div class="my-2">
+                                            <div class="my-4">
+                                                <jet-label for="hora_entrada_seg_empleo"
+                                                           value="Hora de Entrada a Laborar al Segundo Empleo:"/>
+                                                {{
+                                                    time_entrada_segundo_empleo.hours
+                                                }}:{{ time_entrada_segundo_empleo.minutes }}
+                                                <Datepicker v-model="time_entrada_segundo_empleo" timePicker/>
+                                            </div>
+                                        </div>
 
-                                    <div class="my-4">
-                                        <jet-label for="telefono_recados"
-                                                   value=" Teléfono para Recados:"/>
-                                        <jet-input id="telefono_recados" type="text"
-                                                   class="mt-1 block w-full"
-                                                   v-model="telefono_recados"
-                                                   required
-                                                   autofocus
-                                                   autocomplete=" Teléfono para Recados"/>
-                                    </div>
+                                        <div class="my-4">
+                                            <div class="my-4">
+                                                <jet-label for="hora_entrada_seg_empleo"
+                                                           value="Hora de Salida de Laborar al Segundo Empleo:"/>
+                                                {{
+                                                    time_salida_segundo_empleo.hours
+                                                }}:{{ time_salida_segundo_empleo.minutes }}
+                                                <Datepicker v-model="time_salida_segundo_empleo" timePicker/>
+                                            </div>
+                                        </div>
 
-                                    <div class="my-4">
-                                        <jet-label for="Email"
-                                                   value="Correo Electrónico:"/>
-                                        <jet-input id="Email" type="text" class="mt-1 block w-full"
-                                                   v-model="Email"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="Email"/>
-                                    </div>
+                                        <div class="my-4">
+                                            <jet-label for="dias_laborales"
+                                                       value="Días Laborales del Segundo Empleo:"/>
+                                            <select id="Nivel_escolaridad" v-model="form.dias_laborales_segundo_empleo"
+                                                    class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                                <option :value="form.dias_laborales_segundo_empleo">
+                                                    {{ form.dias_laborales_segundo_empleo }}
+                                                </option>
+                                                <option v-for="dias_laborales in form.dias_laborales_list">
+                                                    {{ dias_laborales }}
+                                                </option>
+                                            </select>
+                                        </div>
 
-                                    <div class="my-4">
-                                        <jet-label for="clave_sector"
-                                                   value="Clave de Sector:"/>
-                                        <jet-input id="clave_sector" type="text" class="mt-1 block w-full"
-                                                   v-model="clave_sector"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="Clave de Sector"/>
-                                    </div>
+                                        <div class="my-4">
+                                            <jet-label for="telefono_laboral_seg_empleo"
+                                                       value="Teléfono Laboral del Segundo Empleo:"/>
+                                            <jet-input id="telefono_laboral_seg_empleo" type="text"
+                                                       class="mt-1 block w-full"
+                                                       v-model="form.telefono_laboral_segundo_empleo"
+                                                       required
+                                                       placeholder="Teléfono Laboral del Segundo Empleo"
+                                                       autofocus
+                                                       autocomplete="Teléfono Laboral del Segundo Empleo"/>
+                                        </div>
 
-                                    <div class="my-4">
-                                        <jet-label for="secretaria_o_ente_dministrativo"
-                                                   value="Secretaría o Ente Administrativo:"/>
-                                        <jet-input id="secretaria_o_ente_dministrativo" type="text"
-                                                   class="mt-1 block w-full"
-                                                   v-model="secretaria_o_ente_dministrativo"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="SECRETARÍA O ENTE ADMINISTRATIVO"/>
-                                    </div>
+                                        <div class="my-4">
+                                            <jet-label for="telefono_laboral_seg_empleo"
+                                                       value="Extensión del teléfono laboral del segundo empleo:"/>
+                                            <jet-input id="telefono_laboral_seg_empleo" type="text"
+                                                       class="mt-1 block w-full"
+                                                       v-model="form.extension_telefono_laboral_segundo_empleo"
+                                                       required
+                                                       placeholder="Extensión del número telefónico del trabajo sin guiones o espacios."
+                                                       autofocus
+                                                       autocomplete="Teléfono Laboral del Segundo Empleo"/>
+                                        </div>
 
-                                    <div class="my-4">
-                                        <jet-label for="clave_unidad_administrativa"
-                                                   value="Clave de la Unidad Administrativa:"/>
-                                        <jet-input id="clave_unidad_administrativa" type="text"
-                                                   class="mt-1 block w-full"
-                                                   v-model="clave_unidad_administrativa"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="Clave de la Unidad Administrativa"/>
-                                    </div>
+                                        <div class="my-4">
+                                            <jet-label for="domicilio_laboral_segundo_empleo"
+                                                       value=" Domicilio Laborla (Avenida o Calle):"/>
+                                            <jet-input id="domicilio_laboral_segundo_empleo" type="text"
+                                                       class="mt-1 block w-full"
+                                                       v-model="form.domicilio_laborl_asegundo_empleo"
+                                                       required
+                                                       placeholder="Nombre de la avenida, calle, etc ."
+                                                       autofocus
+                                                       autocomplete="Domicilio"/>
+                                        </div>
 
-                                    <div class="my-4">
-                                        <jet-label for="nombre_unidad_administrativa"
-                                                   value="Nombre de la Unidad Administrativa:"/>
-                                        <jet-input id="nombre_unidad_administrativa" type="text"
-                                                   class="mt-1 block w-full"
-                                                   v-model="nombre_unidad_administrativa"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="Nombre de la Unidad Administrativa"/>
-                                    </div>
+                                        <div class="my-4">
+                                            <jet-label for="numero_domicilio_segundo_empleo"
+                                                       value="Número (Exterior, Interior, Lote, Manzana, etc.):"/>
+                                            <jet-input id="numero_domicilio_segundo_empleo" type="text"
+                                                       class="mt-1 block w-full"
+                                                       v-model="form.numero_domicilio_segundo_empleo"
+                                                       required
+                                                       placeholder="Número (Exterior, Interior, Lote, Manzana, etc.)"
+                                                       autofocus
+                                                       autocomplete="Numero domicilio"/>
+                                        </div>
 
-                                    <div class="my-4">
-                                        <jet-label for="oficina_o_area_de_adscripcion"
-                                                   value="Oficina o Área de Adscripción:"/>
-                                        <jet-input id="oficina_o_area_de_adscripcion" type="text"
-                                                   class="mt-1 block w-full"
-                                                   v-model="oficina_o_area_de_adscripcion"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="oficina_o_area_de_adscripcion"/>
-                                    </div>
+                                        <div class="my-4">
+                                            <jet-label for="Código_postal_segundo_empleo"
+                                                       value="Código postal:"/>
+                                            <jet-input id="Código_postal_segundo_empleo" type="text"
+                                                       class="mt-1 block w-full"
+                                                       v-model="form.codigo_postal_segundo_empleo"
+                                                       required
+                                                       placeholder="Código Postal"
+                                                       autofocus
+                                                       autocomplete="Código_postal_segundo_emple"/>
 
-                                    <div class="my-4">
-                                        <jet-label for="descripcion_del_puesto"
-                                                   value="Descripción del puesto:"/>
-                                        <jet-input id="descripcion_del_puesto" type="text" class="mt-1 block w-full"
-                                                   v-model="descripcion_del_puesto"
-                                                   required
-                                                   autofocus
-                                                   autocomplete="descripcion_del_puesto"/>
-                                    </div>
+                                        </div>
 
+                                        <div class="my-4">
+                                            <jet-label for="Colonia_segundo_empleo"
+                                                       value="Colonia:"/>
+                                            <jet-input id="Colonia_segundo_empleo" type="text" class="mt-1 block w-full"
+                                                       v-model="form.colonia_segundo_empleo"
+                                                       required
+                                                       placeholder="Código postal del domicilio donde labora el trabajador (a)."
+                                                       autofocus
+                                                       autocomplete="Colonia_segundo_empleo"/>
+
+                                        </div>
+
+                                        <div class="my-4">
+                                            <jet-label for="Alcaldía_o_municipio_segundo_empleo"
+                                                       value="Nombre de la alcaldía donde esta ubicado el domicilio laboral::"/>
+                                            <jet-input id="Alcaldía_o_municipio_segundo_empleo" type="text"
+                                                       class="mt-1 block w-full"
+                                                       v-model="form.alcaldia_o_municipio_segundo_empleo"
+                                                       required
+                                                       placeholder="Alcaldía o municipio"
+                                                       autofocus
+                                                       autocomplete="Colonia_segundo_empleo"/>
+
+                                        </div>
+                                    </div>
                                     <div class="my-12">
 
                                         <a :href="route('datosTutor.create')">
@@ -384,15 +416,26 @@ export default defineComponent({
                 nivel_salarial: '',
                 seccion_sindical: '',
                 hora_entrada: '',
-                dias_laborales: '',
-                tiene_segundo_empleo: 'No',
-                mencione_donde:''
+                dias_laborales: 'Seleccione una Opción',
+                //aqi me quedé        tiene_segundo_empleo: 'No',
+                mencione_donde: '',
+                dias_laborales_list: ['LUNES A VIERNES', 'SÁBADOS, DOMINGOS Y DÍAS FESTIVOS', 'LUNES A DOMINGO'],
+                dias_laborales_segundo_empleo: 'Seleccione una Opción',
+                telefono_laboral_segundo_empleo: '',
+                extension_telefono_laboral_segundo_empleo: '',
+                domicilio_laborl_asegundo_empleo: '',
+                numero_domicilio_segundo_empleo: '',
+                codigo_postal_segundo_empleo: '',
+                Colonia_segundo_empleo: '',
+                alcaldia_o_municipio_segundo_empleo: '',
+                colonia_segundo_empleo: ''
+
 
             })
         }
     },
     setup() {
-        const time = ref({
+        const time_entrada = ref({
             hora: new Date().getHours(),
             minutos: new Date().getMinutes()
         });
@@ -401,11 +444,136 @@ export default defineComponent({
             hora: new Date().getHours(),
             minutos: new Date().getMinutes()
         });
+        const time_entrada_segundo_empleo = ref({
+            hora: new Date().getHours(),
+            minutos: new Date().getMinutes()
+        });
+        const time_salida_segundo_empleo = ref({
+            hora: new Date().getHours(),
+            minutos: new Date().getMinutes()
+        });
 
         return {
-            time,
-            time_salida
+            time_entrada,
+            time_salida,
+            time_entrada_segundo_empleo,
+            time_salida_segundo_empleo
         }
+    },
+    mounted() {
+        if (localStorage.funcion_real) {
+            this.form.funcion_real = localStorage.funcion_real;
+        }
+        if (localStorage.domicilio_laboral) {
+            this.form.domicilio_laboral = localStorage.domicilio_laboral;
+        }
+        if (localStorage.numero_ext_o_int) {
+            this.form.numero_ext_o_int = localStorage.numero_ext_o_int;
+        }
+        if (localStorage.colonia_laboral) {
+            this.form.colonia_laboral = localStorage.colonia_laboral;
+        }
+        if (localStorage.alcaldia_laboral) {
+            this.form.alcaldia_laboral = localStorage.alcaldia_laboral;
+        }
+        if (localStorage.codogo_postal_laboral) {
+            this.form.codogo_postal_laboral = localStorage.codogo_postal_laboral;
+        }
+        if (localStorage.telefono_laboral) {
+            this.form.telefono_laboral = localStorage.telefono_laboral;
+        }
+        if (localStorage.extension_del_relefono_laboral) {
+            this.form.extension_del_relefono_laboral = localStorage.extension_del_relefono_laboral;
+        }
+        if (localStorage.tipo_de_nomina) {
+            this.form.tipo_de_nomina = localStorage.tipo_de_nomina;
+        }
+        if (localStorage.numero_de_empleado) {
+            this.form.numero_de_empleado = localStorage.numero_de_empleado;
+        }
+        if (localStorage.numero_de_plaza) {
+            this.form.numero_de_plaza = localStorage.numero_de_plaza;
+        }
+        if (localStorage.nivel_salarial) {
+            this.form.nivel_salarial = localStorage.nivel_salarial;
+        }
+        if (localStorage.seccion_sindical) {
+            this.form.seccion_sindical = localStorage.seccion_sindical;
+        }
+        if (localStorage.hora_entrada) {
+            this.form.hora_entrada = localStorage.hora_entrada;
+        }
+        if (localStorage.dias_laborales) {
+            this.form.dias_laborales = localStorage.dias_laborales;
+        }
+        if (localStorage.tiene_segundo_empleo) {
+            this.form.tiene_segundo_empleo = localStorage.tiene_segundo_empleo;
+        }
+        if (localStorage.mencione_donde) {
+            this.form.mencione_donde = localStorage.mencione_donde;
+        }
+        if (localStorage.dias_laborales_segundo_empleo) {
+            this.form.dias_laborales_segundo_empleo = localStorage.dias_laborales_segundo_empleo;
+        }
+        if (localStorage.telefono_laboral_segundo_empleo) {
+            this.form.telefono_laboral_segundo_empleo = localStorage.telefono_laboral_segundo_empleo;
+        }
+        if (localStorage.extension_telefono_laboral_segundo_empleo) {
+            this.form.extension_telefono_laboral_segundo_empleo = localStorage.extension_telefono_laboral_segundo_empleo;
+        }
+        if (localStorage.domicilio_laborl_asegundo_empleo) {
+            this.form.domicilio_laborl_asegundo_empleo = localStorage.domicilio_laborl_asegundo_empleo;
+        }
+        if (localStorage.numero_domicilio_segundo_empleo) {
+            this.form.numero_domicilio_segundo_empleo = localStorage.numero_domicilio_segundo_empleo;
+        }
+        if (localStorage.codigo_postal_segundo_empleo) {
+            this.form.codigo_postal_segundo_empleo = localStorage.codigo_postal_segundo_empleo;
+        }
+        if (localStorage.Colonia_segundo_empleo) {
+            this.form.Colonia_segundo_empleo = localStorage.Colonia_segundo_empleo;
+        }
+        if (localStorage.alcaldia_o_municipio_segundo_empleo) {
+            this.form.alcaldia_o_municipio_segundo_empleo = localStorage.alcaldia_o_municipio_segundo_empleo;
+        }
+        if (localStorage.colonia_segundo_empleo) {
+            this.form.oficina_o_area_de_adscripcion = localStorage.oficina_o_area_de_adscripcion;
+        }
+        if (localStorage.descripcion_del_puesto) {
+            this.form.descripcion_del_puesto = localStorage.descripcion_del_puesto;
+        }
+    },
+    methods: {
+        persist() {
+            localStorage.funcion_real = this.form.funcion_real;
+            localStorage.domicilio_laboral = this.form.domicilio_laboral;
+            localStorage.numero_ext_o_int = this.form.numero_ext_o_int;
+            localStorage.colonia_laboral = this.form.colonia_laboral;
+            localStorage.alcaldia_laboral = this.form.alcaldia_laboral;
+            localStorage.codogo_postal_laboral = this.form.codogo_postal_laboral;
+            localStorage.telefono_laboral = this.form.telefono_laboral;
+            localStorage.extension_del_relefono_laboral = this.form.extension_del_relefono_laboral;
+            localStorage.tipo_de_nomina = this.form.tipo_de_nomina;
+            localStorage.numero_de_empleado = this.form.numero_de_empleado;
+            localStorage.numero_de_plaza = this.form.numero_de_plaza;
+            localStorage.nivel_salarial = this.form.nivel_salarial;
+            localStorage.seccion_sindical = this.form.seccion_sindical;
+            localStorage.hora_entrada = this.form.hora_entrada;
+            localStorage.dias_laborales = this.form.dias_laborales;
+            localStorage.tiene_segundo_empleo = this.form.tiene_segundo_empleo; //aqui me quedo
+            localStorage.curp = this.form.curp;
+            localStorage.edad = this.form.edad;
+            localStorage.telefono_celular = this.form.telefono_celular;
+            localStorage.telefono_recados = this.form.telefono_recados;
+            localStorage.Email = this.form.Email;
+            localStorage.clave_sector = this.form.clave_sector;
+            localStorage.secretaria_o_ente_dministrativo = this.form.secretaria_o_ente_dministrativo;
+            localStorage.clave_unidad_administrativa = this.form.clave_unidad_administrativa;
+            localStorage.nombre_unidad_administrativa = this.form.nombre_unidad_administrativa;
+            localStorage.oficina_o_area_de_adscripcion = this.form.oficina_o_area_de_adscripcion;
+            localStorage.descripcion_del_puesto = this.form.descripcion_del_puesto;
+        }
+
     }
 
 })
