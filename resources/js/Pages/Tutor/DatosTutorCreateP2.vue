@@ -8,8 +8,8 @@
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="  max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-[url('/img/FondoRepeat.png')] overflow-hidden shadow-xl sm:rounded-lg">
 
                     <div>
                         <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
@@ -173,16 +173,31 @@
                                     <div class="my-4">
                                         <jet-label for="hora_entrada"
                                                    value="Hora de Entrada a Laborar:"/>
-                                        {{ time_entrada.hours }}:{{ time_entrada.minutes }}
-                                        <Datepicker v-model="time_entrada" timePicker/>
+                                        <div class=" text-green-700">
+                                            <input type="time" v-model="form.hora_entrada"
+                                                   class="form-control block w-full px-3 py-1.5 text-base font-normal
+                                                   text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
+                                                   ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                                                   placeholder="Seleccione una hora"
+                                                   data-mdb-toggle="input-toggle-timepicker"/>
+                                            >{{ form.hora_entrada }}
+                                        </div>
+
                                     </div>
 
 
                                     <div class="my-4">
                                         <jet-label for="hora_salida"
                                                    value="Hora de salida laboral:"/>
-                                        {{ time_salida.hours }}:{{ time_salida.minutes }}
-                                        <Datepicker v-model="time_salida" timePicker/>
+                                        <div class=" text-green-700">
+                                            <input type="time" v-model="form.hora_salida_laboral"
+                                                   class="form-control block w-full px-3 py-1.5 text-base font-normal
+                                                   text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
+                                                   ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                                                   placeholder="Seleccione una hora"
+                                                   data-mdb-toggle="input-toggle-timepicker"/>
+                                            >{{ form.hora_salida_laboral }}
+                                        </div>
                                     </div>
 
                                     <div class="my-4">
@@ -225,6 +240,7 @@
                                                    autocomplete="Mencione Dónde"/>
                                     </div>
 
+
                                 </div>
                             </div>
 
@@ -236,10 +252,16 @@
                                             <div class="my-4">
                                                 <jet-label for="hora_entrada_seg_empleo"
                                                            value="Hora de Entrada a Laborar al Segundo Empleo:"/>
-                                                {{
-                                                    time_entrada_segundo_empleo.hours
-                                                }}:{{ time_entrada_segundo_empleo.minutes }}
-                                                <Datepicker v-model="time_entrada_segundo_empleo" timePicker/>
+                                                <div class=" text-green-700">
+                                                    <input type="time" v-model="form.hora_entrada_segundo_empleo"
+
+                                                           class=" form-control block w-full px-3 py-1.5 text-base font-normal
+                                                   text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
+                                                   ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                                                           placeholder="Seleccione una hora"
+                                                           data-mdb-toggle="input-toggle-timepicker"/>
+                                                    >{{ form.hora_entrada_segundo_empleo }}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -247,10 +269,16 @@
                                             <div class="my-4">
                                                 <jet-label for="hora_entrada_seg_empleo"
                                                            value="Hora de Salida de Laborar al Segundo Empleo:"/>
-                                                {{
-                                                    time_salida_segundo_empleo.hours
-                                                }}:{{ time_salida_segundo_empleo.minutes }}
-                                                <Datepicker v-model="time_salida_segundo_empleo" timePicker/>
+                                                <div class=" text-green-700">
+                                                    <input type="time" v-model="form.hora_salida_segundo_empleo"
+                                                           class="form-control block w-full px-3 py-1.5 text-base font-normal
+                                                   text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
+                                                   ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                                                           placeholder="Seleccione una hora"
+                                                           data-mdb-toggle="input-toggle-timepicker"/>
+                                                    >{{ form.hora_salida_segundo_empleo }}
+                                                </div>
+                                                <!--                                                <Datepicker class="bg-green-meadow" v-model="time_salida_segundo_empleo" timePicker/>-->
                                             </div>
                                         </div>
 
@@ -357,7 +385,7 @@
                                     <div class="my-12">
 
                                         <a :href="route('datosTutor.create')">
-                                            <jet-button class="bg-blue-600 mx-8">
+                                            <jet-button @click="persist" class="bg-blue-600 mx-8">
                                                 Atras
                                             </jet-button>
                                         </a>
@@ -387,10 +415,13 @@ import JetLabel from '@/Jetstream/Label.vue'
 import JetInput from '@/Jetstream/Input.vue'
 import JetButton from '@/Jetstream/Button.vue'
 import {ref} from 'vue';
+import moment from 'moment';
+import Input from "@/Jetstream/Input";
 
 
 export default defineComponent({
     components: {
+        Input,
         JetLabel,
         JetInput,
         JetButton,
@@ -401,6 +432,7 @@ export default defineComponent({
     data() {
         return {
             form: this.$inertia.form({
+                clock_status: false,
                 name: 'Su exelencia Sr Licenciao Andrés Manuel López Obrador',
                 funcion_real: '',
                 domicilio_laboral: '',
@@ -416,8 +448,9 @@ export default defineComponent({
                 nivel_salarial: '',
                 seccion_sindical: '',
                 hora_entrada: '',
+                hora_salida_laboral: '',
                 dias_laborales: 'Seleccione una Opción',
-                //aqi me quedé        tiene_segundo_empleo: 'No',
+                tiene_segundo_empleo: 'No',
                 mencione_donde: '',
                 dias_laborales_list: ['LUNES A VIERNES', 'SÁBADOS, DOMINGOS Y DÍAS FESTIVOS', 'LUNES A DOMINGO'],
                 dias_laborales_segundo_empleo: 'Seleccione una Opción',
@@ -428,37 +461,53 @@ export default defineComponent({
                 codigo_postal_segundo_empleo: '',
                 Colonia_segundo_empleo: '',
                 alcaldia_o_municipio_segundo_empleo: '',
-                colonia_segundo_empleo: ''
+                colonia_segundo_empleo: '',
+                hora_entrada_segundo_empleo: '',
+                hora_salida_segundo_empleo: ''
 
 
             })
         }
     },
     setup() {
-        const time_entrada = ref({
-            hora: new Date().getHours(),
-            minutos: new Date().getMinutes()
-        });
 
-        const time_salida = ref({
-            hora: new Date().getHours(),
-            minutos: new Date().getMinutes()
-        });
-        const time_entrada_segundo_empleo = ref({
-            hora: new Date().getHours(),
-            minutos: new Date().getMinutes()
-        });
-        const time_salida_segundo_empleo = ref({
-            hora: new Date().getHours(),
-            minutos: new Date().getMinutes()
-        });
-
-        return {
-            time_entrada,
-            time_salida,
-            time_entrada_segundo_empleo,
-            time_salida_segundo_empleo
-        }
+        // const date = ref();
+        // const time_entrada = ref({
+        //     hora: new Date().getHours(),
+        //     minutos: new Date().getMinutes()
+        // });
+        //
+        // const time_salida = ref({
+        //     hora: new Date().getHours(),
+        //     minutos: new Date().getMinutes()
+        // });
+        // const time_entrada_segundo_empleo = ref({
+        //     hora: new Date().getHours(),
+        //     minutos: new Date().getMinutes()
+        // });
+        // const time_salida_segundo_empleo = ref({
+        //     hora: new Date().getHours(),
+        //     minutos: new Date().getMinutes(),
+        // });
+        // const handleDate = (modelData) => {
+        //     date.value = modelData;
+        //     // do something else with the data
+        //     // this.form.hora_entrada=date.value.hours;
+        //     // console.log(this.form.hora_entrada);
+        // }
+        //
+        // // const startDate = ref(new Date(2020, 1, 6, 12,35,0));
+        //
+        //
+        // return {
+        //     time_entrada,
+        //     time_salida,
+        //     time_entrada_segundo_empleo,
+        //     time_salida_segundo_empleo,
+        //     handleDate,
+        //     date,
+        //     // startDate
+        // }
     },
     mounted() {
         if (localStorage.funcion_real) {
@@ -500,9 +549,6 @@ export default defineComponent({
         if (localStorage.seccion_sindical) {
             this.form.seccion_sindical = localStorage.seccion_sindical;
         }
-        if (localStorage.hora_entrada) {
-            this.form.hora_entrada = localStorage.hora_entrada;
-        }
         if (localStorage.dias_laborales) {
             this.form.dias_laborales = localStorage.dias_laborales;
         }
@@ -542,6 +588,18 @@ export default defineComponent({
         if (localStorage.descripcion_del_puesto) {
             this.form.descripcion_del_puesto = localStorage.descripcion_del_puesto;
         }
+        if (localStorage.hora_entrada) {
+            this.form.hora_entrada = localStorage.hora_entrada;
+        }
+        if (localStorage.hora_salida_laboral) {
+            this.form.hora_salida_laboral = localStorage.hora_salida_laboral;
+        }
+        if (localStorage.hora_entrada_segundo_empleo) {
+            this.form.hora_entrada_segundo_empleo = localStorage.hora_entrada_segundo_empleo;
+        }
+        if (localStorage.hora_salida_segundo_empleo) {
+            this.form.hora_salida_segundo_empleo = localStorage.hora_salida_segundo_empleo;
+        }
     },
     methods: {
         persist() {
@@ -558,22 +616,53 @@ export default defineComponent({
             localStorage.numero_de_plaza = this.form.numero_de_plaza;
             localStorage.nivel_salarial = this.form.nivel_salarial;
             localStorage.seccion_sindical = this.form.seccion_sindical;
-            localStorage.hora_entrada = this.form.hora_entrada;
+            // localStorage.hora_entrada = this.form.hora_entrada;
             localStorage.dias_laborales = this.form.dias_laborales;
             localStorage.tiene_segundo_empleo = this.form.tiene_segundo_empleo; //aqui me quedo
-            localStorage.curp = this.form.curp;
-            localStorage.edad = this.form.edad;
-            localStorage.telefono_celular = this.form.telefono_celular;
-            localStorage.telefono_recados = this.form.telefono_recados;
-            localStorage.Email = this.form.Email;
-            localStorage.clave_sector = this.form.clave_sector;
-            localStorage.secretaria_o_ente_dministrativo = this.form.secretaria_o_ente_dministrativo;
-            localStorage.clave_unidad_administrativa = this.form.clave_unidad_administrativa;
-            localStorage.nombre_unidad_administrativa = this.form.nombre_unidad_administrativa;
-            localStorage.oficina_o_area_de_adscripcion = this.form.oficina_o_area_de_adscripcion;
-            localStorage.descripcion_del_puesto = this.form.descripcion_del_puesto;
+            localStorage.mencione_donde = this.form.mencione_donde;
+            localStorage.dias_laborales_segundo_empleo = this.form.dias_laborales_segundo_empleo;
+            localStorage.telefono_laboral_segundo_empleo = this.form.telefono_laboral_segundo_empleo;
+            localStorage.extension_telefono_laboral_segundo_empleo = this.form.extension_telefono_laboral_segundo_empleo;
+            localStorage.domicilio_laborl_asegundo_empleo = this.form.domicilio_laborl_asegundo_empleo;
+            localStorage.numero_domicilio_segundo_empleo = this.form.numero_domicilio_segundo_empleo;
+            localStorage.codigo_postal_segundo_empleo = this.form.codigo_postal_segundo_empleo;
+            localStorage.Colonia_segundo_empleo = this.form.Colonia_segundo_empleo;
+            localStorage.alcaldia_o_municipio_segundo_empleo = this.form.alcaldia_o_municipio_segundo_empleo;
+            localStorage.colonia_segundo_empleo = this.form.colonia_segundo_empleo;
+            localStorage.hora_entrada = this.form.hora_entrada;
+            localStorage.hora_salida_laboral = this.form.hora_salida_laboral;
+            localStorage.hora_entrada_segundo_empleo= this.form.hora_entrada_segundo_empleo;
+            localStorage.hora_salida_segundo_empleo= this.form.hora_salida_segundo_empleo;
+        },
+        hora_entrada_format_moment() {
+            var hora_entrada = this.form.hora_entrada;
+            return moment(hora_entrada, 'hh:mm').format('HH:mm');
+        },
+        hora_entrada_segundo_empleo_format_moment() {
+            var hora_entrada = this.form.hora_entrada_segundo_empleo;
+            return moment(hora_entrada, 'hh:mm').format('HH:mm');
+        },
+        hora_salida_format_moment() {
+            var hora_salida=this.form.hora_entrada;
+            return moment(hora_salida ,'hh:mm').format('HH:mm');
+        },
+        hora_salida_segundo_empleo_format_moment() {
+            var hora_salidaa=this.form.hora_salida_segundo_empleo;
+            return moment(hora_salidaa, 'hh:mm').format('HH:mm');
         }
 
+    },
+    computed: {
+        // hora_entrada_laboral() {
+        //     if (this.time_entrada) {
+        //         return this.form.hora_entrada = this.time_entrada.hours;
+        //     }
+        // },
+        // hora_entrada_laboral_minutos() {
+        //     if (this.time_entrada) {
+        //         return this.form.hora_entrada_minutos = this.time_entrada.minutes;
+        //     }
+        // }
     }
 
 })

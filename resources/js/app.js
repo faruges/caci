@@ -6,13 +6,8 @@ import { InertiaProgress } from '@inertiajs/progress';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import 'vuejs-noty/dist/vuejs-noty.css'
-import Vue from 'vue';
-import VueNoty from 'vuejs-noty';
-// const app = createApp(App);
-//
-// app.component('Datepicker', Datepicker);
-//
-// app.mount('#app');
+
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 
