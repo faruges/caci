@@ -10,13 +10,13 @@
         <div class="text-red-700" v-if="(flash.status!='null')">
             <p> {{ flash.status }}</p>
         </div>
-        <p class="text-red-700" v-if="form.errors.length">
+        <div class="text-red-700" v-if="form.errors.length">
             <b>Por favor. corrija el o los siguiente(s) error(es): </b>
         <ul>
             <li v-for="error in form.errors">{{ error }}</li>
 
         </ul>
-        </p>
+        </div>
 
         <form @submit.prevent="submit">
             <div>

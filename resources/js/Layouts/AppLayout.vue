@@ -314,6 +314,7 @@ import JetNavLink from '@/Jetstream/NavLink.vue'
 import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
 import {Head, Link} from '@inertiajs/inertia-vue3';
 
+
 export default defineComponent({
     props: {
         title: String,
@@ -328,6 +329,7 @@ export default defineComponent({
         JetNavLink,
         JetResponsiveNavLink,
         Link,
+
     },
 
     data() {
