@@ -81,12 +81,15 @@ import {defineComponent} from 'vue'
 import JetLabel from '@/Jetstream/Label.vue'
 import JetInput from '@/Jetstream/Input.vue'
 import JetButton from '@/Jetstream/Button.vue'
+import {Head, Link} from '@inertiajs/inertia-vue3';
 
 export default defineComponent({
     components: {
         JetLabel,
         JetInput,
-        JetButton
+        JetButton,
+        Link,
+        Head
     },
     data() {
         return {

@@ -34,6 +34,7 @@
         "vue-dk-toast": "^3.2.1",
         "vue-notification": "^1.3.20",
         "vue-select": "^4.0.0-beta.3",
-        "vuejs-noty": "^0.1.4"
+        "vuejs-noty": "^0.1.4",
+        "yup": "^0.32.11"
     }
 }

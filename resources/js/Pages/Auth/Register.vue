@@ -143,7 +143,7 @@ export default defineComponent({
 
 
             this.form.errors = [];
-            if (this.form.email == '') {
+            if (this.form.email === '') {
 
                 this.form.errors.push('el correo electrónico es obligatorio');
             } else if (!this.validEmail(this.form.email)) {

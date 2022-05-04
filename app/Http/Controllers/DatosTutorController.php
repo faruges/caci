@@ -34,6 +34,8 @@ class DatosTutorController extends Controller
 
     public function createP2()
     {
+//        echo 'que tranza banda drogadicta!!!';
+//        return Inertia::render('Tutor/DatosTutorCreate');
         return Inertia::render('Tutor/DatosTutorCreateP2');
     }
 

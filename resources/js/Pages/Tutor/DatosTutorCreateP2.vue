@@ -241,19 +241,19 @@
                                     <div class="my-4">
                                         <jet-label for="dias_laborales"
                                                    value="Días Laborales:"/>
-                                        <field id="Nivel_escolaridad" v-model="form.dias_laborales"
-                                               class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                                                 focus:border-blue-500 block w-full p-2.5 "
-                                               as="select"
+                                        <Field name="dias_laborales" as="select"
                                                :rules="isRequired"
-                                               name="dias_laborales">
-                                            <option :value="form.dias_laborales">
-                                                {{ form.dias_laborales }}
+                                               v-model="form.dias_laborales"
+                                               class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring
+                                                   focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                            <option value="">Seleccione una opción</option>
+
+                                            <option v-for="dia_laboral in form.dias_laborales_list"
+                                                    :value="dia_laboral">
+                                                {{ dia_laboral }}
                                             </option>
-                                            <option v-for="dias_laborales in form.dias_laborales_list">
-                                                {{ dias_laborales }}
-                                            </option>
-                                        </field>
+
+                                        </Field>
                                         <span class="text-red-600">{{ errors.dias_laborales }}</span>
                                     </div>
 
@@ -285,11 +285,7 @@
                                         <span class="text-red-600">{{ errors.mencione_donde }}</span>
                                     </div>
 
-                                    <div class="my-12">
-                                        <jet-button class="bg-blue-600 mx-8">
-                                            Guardar
-                                        </jet-button>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -299,139 +295,193 @@
                                     <div v-if="form.tiene_segundo_empleo=='Si'">
                                         <div class="my-2">
                                             <div class="my-4">
-                                                <jet-label for="hora_entrada_seg_empleo"
-                                                           value="Hora de Entrada a Laborar al Segundo Empleo:"/>
+                                                <jet-label for="hora_entrada_al_segundo_empleo"
+                                                           value="Hora de Entrada al Laborar al Segundo Empleo:"/>
                                                 <div class=" text-green-700">
                                                     <field type="time" v-model="form.hora_entrada_segundo_empleo"
-                                                    name="hora_entrada_segundo_empleo"
-                                                           roules="isRequired"
-                                                           class=" form-control block w-full px-3 py-1.5 text-base font-normal
+                                                           class="form-control block w-full px-3 py-1.5 text-base font-normal
                                                    text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
                                                    ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
                                                            placeholder="Seleccione una hora"
-                                                           data-mdb-toggle="input-toggle-timepicker"/>
-                                                    <span class="text-red-600">{{ errors.hora_entrada_segundo_empleo }}</span>
+                                                           data-mdb-toggle="input-toggle-timepicker"
+                                                           name="hora_entrada_segundo_empleo"
+                                                           :rules="isRequired"
+                                                    />
+                                                    <span class="text-red-600">{{
+                                                            errors.hora_entrada_segundo_empleo
+                                                        }}</span>
                                                 </div>
+
                                             </div>
                                         </div>
 
                                         <div class="my-4">
                                             <div class="my-4">
-                                                <jet-label for="hora_entrada_seg_empleo"
-                                                           value="Hora de Salida de Laborar al Segundo Empleo:"/>
+                                                <jet-label for="hora_salida_segundo_empleo"
+                                                           value="Hora de Salida Laboral del Segundo Empleo:"/>
                                                 <div class=" text-green-700">
-                                                    <input type="time" v-model="form.hora_salida_segundo_empleo"
+                                                    <field type="time" v-model="form.hora_salida_segundo_empleo"
                                                            class="form-control block w-full px-3 py-1.5 text-base font-normal
                                                    text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
                                                    ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
                                                            placeholder="Seleccione una hora"
-                                                           data-mdb-toggle="input-toggle-timepicker"/>
-
+                                                           data-mdb-toggle="input-toggle-timepicker"
+                                                           name="hora_salida_segundo_empleo"
+                                                           :rules="isRequired"
+                                                    />
+                                                    <span
+                                                        class="text-red-600">{{
+                                                            errors.hora_salida_segundo_empleo
+                                                        }}</span>
                                                 </div>
+
                                             </div>
                                         </div>
 
                                         <div class="my-4">
-                                            <jet-label for="dias_laborales"
+                                            <jet-label for="dias_laborales_segundo_empleo"
                                                        value="Días Laborales del Segundo Empleo:"/>
-                                            <select id="Nivel_escolaridad" v-model="form.dias_laborales_segundo_empleo"
-                                                    class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                                <option :value="form.dias_laborales_segundo_empleo">
-                                                    {{ form.dias_laborales_segundo_empleo }}
+                                            <Field name="dias_laborales_segundo_empleo" as="select"
+                                                   :rules="isRequired"
+                                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring
+                                                   focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                                   v-model="form.dias_laborales_segundo_empleo">
+                                                <option value="">Seleccione una opción</option>
+
+                                                <option v-for="dia_laboral in form.dias_laborales_list"
+                                                        :value="dia_laboral">
+                                                    {{ dia_laboral }}
                                                 </option>
-                                                <option v-for="dias_laborales in form.dias_laborales_list">
-                                                    {{ dias_laborales }}
-                                                </option>
-                                            </select>
+
+                                            </Field>
+                                            <span class="text-red-600">{{ errors.dias_laborales_segundo_empleo }}</span>
                                         </div>
 
                                         <div class="my-4">
-                                            <jet-label for="telefono_laboral_seg_empleo"
+                                            <jet-label for="telefono_laboral_segundo_empleo"
                                                        value="Teléfono Laboral del Segundo Empleo:"/>
-                                            <jet-input id="telefono_laboral_seg_empleo" type="text"
-                                                       class="mt-1 block w-full"
-                                                       v-model="form.telefono_laboral_segundo_empleo"
-                                                       required
-                                                       placeholder="Teléfono Laboral del Segundo Empleo"
-                                                       autofocus
-                                                       autocomplete="Teléfono Laboral del Segundo Empleo"/>
+                                            <field id="telefono_laboral_segundo_empleo" type="text"
+                                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring
+                                                   focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                                   name="telefono_laboral_segundo_empleo"
+                                                   v-model="form.telefono_laboral_segundo_empleo"
+                                                   placeholder="Teléfono Laboral del Segundo Empleo"
+                                                   :rules="isRequired"/>
+                                            <span class="text-red-600">{{
+                                                    errors.telefono_laboral_segundo_empleo
+                                                }}</span>
                                         </div>
 
                                         <div class="my-4">
-                                            <jet-label for="telefono_laboral_seg_empleo"
+                                            <jet-label for="extension_telefono_laboral_segundo_empleo"
                                                        value="Extensión del teléfono laboral del segundo empleo:"/>
-                                            <jet-input id="telefono_laboral_seg_empleo" type="text"
-                                                       class="mt-1 block w-full"
-                                                       v-model="form.extension_telefono_laboral_segundo_empleo"
-                                                       required
-                                                       placeholder="Extensión del número telefónico del trabajo sin guiones o espacios."
-                                                       autofocus
-                                                       autocomplete="Teléfono Laboral del Segundo Empleo"/>
+                                            <field id="extension_telefono_laboral_segundo_empleo" type="text"
+                                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring
+                                                       focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                                   v-model="form.extension_telefono_laboral_segundo_empleo"
+                                                   name="extension_telefono_laboral_segundo_empleo"
+                                                   placeholder="Extensión del número telefónico del trabajo sin guiones o espacios."
+                                                   :rules="isRequired"/>
+                                            <span
+                                                class="text-red-600">{{
+                                                    errors.extension_telefono_laboral_segundo_empleo
+                                                }}</span>
                                         </div>
 
                                         <div class="my-4">
-                                            <jet-label for="domicilio_laboral_segundo_empleo"
-                                                       value=" Domicilio Laborla (Avenida o Calle):"/>
-                                            <jet-input id="domicilio_laboral_segundo_empleo" type="text"
-                                                       class="mt-1 block w-full"
-                                                       v-model="form.domicilio_laborl_asegundo_empleo"
-                                                       required
-                                                       placeholder="Nombre de la avenida, calle, etc ."
-                                                       autofocus
-                                                       autocomplete="Domicilio"/>
+                                            <jet-label for="domicilio_laborl_asegundo_empleo"
+                                                       value="Domicilio Laboral del segundo empleo (Avenida o Calle)"/>
+                                            <field id="domicilio_laborl_asegundo_empleo" type="text"
+                                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring
+                                                       focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                                   v-model="form.domicilio_laborl_asegundo_empleo"
+                                                   name="domicilio_laborl_asegundo_empleo"
+                                                   placeholder="Domicilio Laboral del segundo empleo (Avenida o Calle)"
+                                                   :rules="isRequired"/>
+                                            <span
+                                                class="text-red-600">{{
+                                                    errors.domicilio_laborl_asegundo_empleo
+                                                }}</span>
                                         </div>
 
                                         <div class="my-4">
                                             <jet-label for="numero_domicilio_segundo_empleo"
                                                        value="Número (Exterior, Interior, Lote, Manzana, etc.):"/>
-                                            <jet-input id="numero_domicilio_segundo_empleo" type="text"
-                                                       class="mt-1 block w-full"
-                                                       v-model="form.numero_domicilio_segundo_empleo"
-                                                       required
-                                                       placeholder="Número (Exterior, Interior, Lote, Manzana, etc.)"
-                                                       autofocus
-                                                       autocomplete="Numero domicilio"/>
+                                            <field id="numero_domicilio_segundo_empleo" type="text"
+                                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring
+                                                       focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                                   v-model="form.numero_domicilio_segundo_empleo"
+                                                   name="numero_domicilio_segundo_empleo"
+                                                   placeholder="Número (Exterior, Interior, Lote, Manzana, etc.)"
+                                                   :rules="isRequired"/>
+                                            <span
+                                                class="text-red-600">{{
+                                                    errors.numero_domicilio_segundo_empleo
+                                                }}</span>
                                         </div>
 
                                         <div class="my-4">
                                             <jet-label for="Código_postal_segundo_empleo"
                                                        value="Código postal:"/>
-                                            <jet-input id="Código_postal_segundo_empleo" type="text"
-                                                       class="mt-1 block w-full"
-                                                       v-model="form.codigo_postal_segundo_empleo"
-                                                       required
-                                                       placeholder="Código Postal"
-                                                       autofocus
-                                                       autocomplete="Código_postal_segundo_emple"/>
+                                            <field id="codigo_postal_segundo_empleo" type="text"
+                                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring
+                                                    focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                                   v-model="form.codigo_postal_segundo_empleo"
+                                                   name="codigo_postal_segundo_empleo"
+                                                   placeholder="Código Postal"
+                                                   :rules="isRequired"/>
+                                            <span
+                                                class="text-red-600">{{
+                                                    errors.codigo_postal_segundo_empleo
+                                                }}</span>
 
                                         </div>
 
                                         <div class="my-4">
-                                            <jet-label for="Colonia_segundo_empleo"
+                                            <jet-label for="colonia_segundo_empleo"
                                                        value="Colonia:"/>
-                                            <jet-input id="Colonia_segundo_empleo" type="text" class="mt-1 block w-full"
-                                                       v-model="form.colonia_segundo_empleo"
-                                                       required
-                                                       placeholder="Código postal del domicilio donde labora el trabajador (a)."
-                                                       autofocus
-                                                       autocomplete="Colonia_segundo_empleo"/>
+                                            <field id="colonia_segundo_empleo" type="text"
+                                                   class="mt-1 block w-full border-gray-300
+                                            focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                                   v-model="form.colonia_segundo_empleo"
+                                                   name="colonia_segundo_empleo"
+                                                   placeholder="Código postal del domicilio donde labora el trabajador (a)."
+                                                   :rules="isRequired"/>
+                                            <span
+                                                class="text-red-600">{{
+                                                    errors.colonia_segundo_empleo
+                                                }}</span>
 
                                         </div>
 
                                         <div class="my-4">
-                                            <jet-label for="Alcaldía_o_municipio_segundo_empleo"
+                                            <jet-label for="alcaldia_o_municipio_segundo_empleo"
                                                        value="Nombre de la alcaldía donde esta ubicado el domicilio laboral::"/>
-                                            <jet-input id="Alcaldía_o_municipio_segundo_empleo" type="text"
-                                                       class="mt-1 block w-full"
-                                                       v-model="form.alcaldia_o_municipio_segundo_empleo"
-                                                       required
-                                                       placeholder="Alcaldía o municipio"
-                                                       autofocus
-                                                       autocomplete="Colonia_segundo_empleo"/>
+                                            <field id="alcaldia_o_municipio_segundo_empleo" type="text"
+                                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200
+                                                       focus:ring-opacity-50 rounded-md shadow-sm"
+                                                   v-model="form.alcaldia_o_municipio_segundo_empleo"
+                                                   name="alcaldia_o_municipio_segundo_empleo"
+                                                   placeholder="Alcaldía o municipio"
+                                                   :rules="isRequired"/>
+                                            <span
+                                                class="text-red-600">{{
+                                                    errors.alcaldia_o_municipio_segundo_empleo
+                                                }}</span>
 
                                         </div>
-                                    </div>
 
+                                    </div>
+                                    <div class="my-12">
+                                        <Link :href="route('datosTutor.create')">
+                                            <jet-button @click="persist" class="bg-blue-600 mx-8">
+                                                Atras
+                                            </jet-button>
+                                        </Link>
+                                        <jet-button class="bg-blue-600 mx-8">
+                                            Guardar
+                                        </jet-button>
+                                    </div>
 
                                 </div>
                             </div>
@@ -444,11 +494,7 @@
         </Form>
         <div class="my-12">
 
-            <a :href="route('datosTutor.create')">
-                <jet-button @click="persist" class="bg-blue-600 mx-8">
-                    Atras
-                </jet-button>
-            </a>
+
         </div>
     </app-layout>
 </template>
@@ -463,7 +509,8 @@ import moment from 'moment';
 import Input from "@/Jetstream/Input";
 import {inject} from 'vue';
 import {Form, Field} from 'vee-validate';
-
+import {useField} from "vee-validate";
+import {Head, Link} from '@inertiajs/inertia-vue3';
 
 export default defineComponent({
     components: {
@@ -474,6 +521,8 @@ export default defineComponent({
         AppLayout,
         Form,
         Field,
+        Link,
+        Head
 
 
     },
@@ -497,11 +546,11 @@ export default defineComponent({
                 seccion_sindical: '',
                 hora_entrada: '',
                 hora_salida_laboral: '',
-                dias_laborales: 'Seleccione una Opción',
+                dias_laborales: '',
                 tiene_segundo_empleo: 'No',
                 mencione_donde: '',
                 dias_laborales_list: ['LUNES A VIERNES', 'SÁBADOS, DOMINGOS Y DÍAS FESTIVOS', 'LUNES A DOMINGO'],
-                dias_laborales_segundo_empleo: 'Seleccione una Opción',
+                dias_laborales_segundo_empleo: '',
                 telefono_laboral_segundo_empleo: '',
                 extension_telefono_laboral_segundo_empleo: '',
                 domicilio_laborl_asegundo_empleo: '',
@@ -518,8 +567,6 @@ export default defineComponent({
         }
     },
     setup() {
-
-
         const toast = inject('$toast');
 
         toast('Hola! como estan?, todo bien? todo correcto? y yo que me alegro !', {

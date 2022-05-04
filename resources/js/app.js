@@ -4,7 +4,9 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import DKToast from 'vue-dk-toast';
-// import { ValidationProvider } from 'vee-validate';
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
+
 
 
 
@@ -18,7 +20,7 @@ createInertiaApp({
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(DKToast)
-            // .component('ValidationProvider', ValidationProvider)
+            .component('v-select', vSelect)
             .mixin({ methods: { route } })
             .mount(el);
     },
