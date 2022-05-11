@@ -82,7 +82,7 @@
                                                    name="curp"
                                                    placeholder="CURP"
                                                    :rules="isCURP"/>
-                                               <ErrorMessage class="text-red-600" name="curp" />
+                                            <ErrorMessage class="text-red-600" name="curp"/>
                                         </div>
 
                                         <div class="my-4">
@@ -120,7 +120,7 @@
                                             <jet-label for="Edad" value="Edad:"/>
                                             <field id="Edad" type="text" class="mt-1 block w-full border-gray-300 focus:border-indigo-300
                                             focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                                                   v-model="form.edad"
+                                                   v-model="edad"
                                                    name="edad"
                                                    placeholder="Edad"
                                                    :rules="isRequired"/>
@@ -292,8 +292,8 @@
                                                    v-model="form.telefono_paticular"
                                                    name="telefono_paticular"
                                                    placeholder="Teléfono Particular"
-                                                   :rules="isRequired"/>
-                                            <span class="text-red-600">{{ errors.telefono_paticular }}</span>
+                                                   :rules="isNumberTelephon"/>
+                                            <ErrorMessage class="text-red-600" name="telefono_paticular"/>
                                         </div>
 
                                     </div>
@@ -312,7 +312,6 @@
                                                    placeholder="Teléfono Celular"
                                                    :rules="isNumberTelephon"
                                             />
-                                            <!--                                            <span class="text-red-600">{{ errors.telefono_celular }}</span>-->
                                             <ErrorMessage class="text-red-600" name="telefono_celular"/>
                                         </div>
 
@@ -325,8 +324,8 @@
                                                    v-model="form.telefono_recados"
                                                    name="telefono_recados"
                                                    placeholder="Teléfono para Recados"
-                                                   :rules="isRequired"/>
-                                            <span class="text-red-600">{{ errors.telefono_recados }}</span>
+                                                   :rules="isNumberTelephon"/>
+                                            <ErrorMessage class="text-red-600" name="telefono_recados"/>
                                         </div>
 
                                         <div class="my-4">
@@ -459,6 +458,9 @@ import {useField} from "vee-validate";
 // import * as Yup from "yup";
 import {Head, Link} from '@inertiajs/inertia-vue3';
 import * as yup from 'yup';
+import axios from "axios";
+import moment from 'moment';
+import {isEnum} from "../../../../public/assets/plugins/global/plugins.bundle";
 
 
 export default defineComponent({
@@ -516,15 +518,13 @@ export default defineComponent({
                 niveles_escolares: ['sin estudios', 'Primaria', 'Secundaria', 'Media superior', 'Superior', 'Maestria', 'Doctorado'],
                 status_niveles_escolares: ['En curso', 'Trunco', 'Concluido'],
                 estados_civil: ['soltero(a)', 'casado(a)', 'Viudo(a)', 'Unión libre', 'divorciado(a)'],
-            }
+            },
+            post: []
         }
     },
     setup() {
-        function validateField(value) {
-            if (!value) {
-                return 'llene el campo por favor';
-            }
-        }
+
+
     },
     mounted() {
         if (localStorage.nombre) {
@@ -608,19 +608,29 @@ export default defineComponent({
         if (localStorage.descripcion_del_puesto) {
             this.form.descripcion_del_puesto = localStorage.descripcion_del_puesto;
         }
+
+        const options = {
+            method: 'GET',
+            url: 'https://mexico-zip-codes.p.rapidapi.com/codigo_postal/64630',
+            headers: {
+                'X-RapidAPI-Host': 'mexico-zip-codes.p.rapidapi.com',
+                'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY'
+            }
+        };
+
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
+
     },
 
     methods: {
         onSubmit(value) {
             this.persist();
+
             // this.$inertia.get(route('datos-tutor.create-P2'));
-            // let numero = parseInt(value);
-            // console.log(value);
-            // console.log(numero);
-            // if (numero != NaN) {
-            //     console.log(numero);
-            //
-            // }
         },
         persist() {
             localStorage.nombre = this.form.nombre;
@@ -651,6 +661,8 @@ export default defineComponent({
             localStorage.oficina_o_area_de_adscripcion = this.form.oficina_o_area_de_adscripcion;
             localStorage.descripcion_del_puesto = this.form.descripcion_del_puesto;
         },
+
+
         //reglas de validación
         isRequired(value) {
             return value ? true : 'Este campo es requerido';
@@ -661,7 +673,7 @@ export default defineComponent({
                 if (regex.test(value)) {
                     return true;
                 } else {
-                    return 'Lo que usted esta intentando escribir no es un número telefonico';
+                    return 'número telefonico no valido';
                 }
             } else {
                 return 'Este campo es requerido ';
@@ -673,7 +685,7 @@ export default defineComponent({
                 if (regex.test(value)) {
                     return true;
                 } else {
-                    return 'Lo que usted esta intentando escribir no es un RFC valido';
+                    return 'RFC no valido';
                 }
             } else {
                 return 'Este campo es requerido';
@@ -681,19 +693,89 @@ export default defineComponent({
         },
         isCURP(value) {
             var curp = value.toUpperCase();
+            var diferenciador_siglo = curp.substring(16, 17);
+            let dif_siglo_parseado = parseInt(diferenciador_siglo);
+            var anho = curp.substring(4, 10);
+            let dateFormat = 'YYYYMMDD';
+            let fecha_de_nacimiento = moment(anho, dateFormat).toDate();
+            let fecha_actual = moment();
+            let inicio_siglo_xxI = moment('20000101', dateFormat).toDate();
+            let fecha_minima_siglo_xx = moment('18800101', dateFormat).toDate();
+            let tipo_de_dato_siglo = typeof dif_siglo_parseado;
             var regex = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/;
             if (value) {
+
                 if (regex.test(curp)) {
-                    return true;
+                    if (isNaN(dif_siglo_parseado)) {
+                        if (moment(fecha_de_nacimiento).isBetween(fecha_actual, inicio_siglo_xxI)) {
+                            return true;
+                        }
+                        else {
+                            return 'curp no valida';
+                        }
+                    } else {
+                        if (tipo_de_dato_siglo === 'number') {
+                            if (moment(fecha_de_nacimiento).isBetween(inicio_siglo_xxI, fecha_minima_siglo_xx)){
+                                return true;
+                            }
+                            return 'cu no valida';
+
+                        }
+                    }
+
                 } else {
-                    return 'lo que usted intenta escribir no es una CURP valida';
+                    return 'CURP no valida';
                 }
             } else {
                 return 'Este campo es requerido';
             }
+        },
+        isCodPost() {
+
         }
 
 
+    },
+    computed: {
+        edad() {
+            if (this.form.curp) {
+                let curp = this.form.curp;
+                let sub_fecha_nacimiento = curp.substring(4, 10); //AAMMDD
+                let sub_anho = sub_fecha_nacimiento.substring(0, 2);
+                let difenciador_siglo = curp.substring(16, 17);
+                let anho;
+                let dif_siglo_parseado = parseInt(difenciador_siglo);
+                let tipo_de_dato_siglo = typeof dif_siglo_parseado;
+                // console.log(dif_siglo_parseado);
+                if (isNaN(dif_siglo_parseado)) {
+                    console.log('parse este no es un numero');
+                    let dateFormat = 'YYMMDD';
+                    let fecha_de_nacimiento = moment(sub_fecha_nacimiento, dateFormat).toDate();
+                    let fecha_actual = moment();
+                    let edad = String(fecha_actual.diff(fecha_de_nacimiento, 'years'));
+                    this.form.edad = edad;
+                    console.log(typeof edad);
+                    return edad;
+                } else {
+                    if (tipo_de_dato_siglo === 'number') {
+                        let dateFormat = 'YYYYMMDD';
+                        anho = parseInt(sub_anho) + 1900;
+                        let mes = sub_fecha_nacimiento.substring(2, 4);
+                        let dia = sub_fecha_nacimiento.substring(4, 6);
+                        let fecha = '' + anho + mes + dia;
+                        let fecha_de_nacimiento = moment(fecha, dateFormat).toDate();
+                        let fecha_actual = moment();
+                        let edad = fecha_actual.diff(fecha_de_nacimiento, 'years');
+                        this.form.edad = edad;
+                        console.log('este si lo es');
+                        return edad;
+                    }
+                }
+
+            }
+
+
+        }
     }
 
 })
