@@ -120,12 +120,17 @@
                                                 class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                             <img class="h-8 w-8 rounded-full object-cover"
                                                  :src="$page.props.user.profile_photo_url"
-                                                 :alt="$page.props.user.name"/>
+                                                 :alt="$page.props.user.name"
+                                            />
                                         </button>
 
                                         <span v-else class="inline-flex rounded-md">
                                             <button type="button"
-                                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                                    class="inline-flex items-center px-3 py-2 border border-transparent
+                                                    text-sm leading-4 font-medium rounded-md text-gray-500 bg-white
+                                                    hover:text-white focus:outline-none transition
+                                                    bg-red-800 hover:bg-gray-500 text-white font-bold py-2 px-4
+                                                     border border-blue-700 rounded">
                                                 {{ $page.props.user.name }}
 
 
@@ -314,12 +319,10 @@ import JetNavLink from '@/Jetstream/NavLink.vue'
 import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
 import {Head, Link} from '@inertiajs/inertia-vue3';
 
-
 export default defineComponent({
     props: {
         title: String,
     },
-
     components: {
         Head,
         JetApplicationMark,
@@ -329,15 +332,12 @@ export default defineComponent({
         JetNavLink,
         JetResponsiveNavLink,
         Link,
-
     },
-
     data() {
         return {
             showingNavigationDropdown: false,
         }
     },
-
     methods: {
         switchToTeam(team) {
             this.$inertia.put(route('current-team.update'), {
@@ -346,7 +346,6 @@ export default defineComponent({
                 preserveState: false
             })
         },
-
         logout() {
             this.$inertia.post(route('logout'));
         },

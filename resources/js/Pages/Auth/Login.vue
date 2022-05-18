@@ -22,8 +22,8 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="email" value="Correo Electronico"/>
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus/>
+                <jet-label for="rfc" value="RFC con homoclave"/>
+                <jet-input id="rfc" type="text" class="mt-1 block w-full" v-model="form.rfc" required autofocus/>
             </div>
 
             <div class="mt-4">
@@ -85,7 +85,7 @@ export default defineComponent({
     data() {
         return {
             form: this.$inertia.form({
-                email: '',
+                rfc: '',
                 password: '',
                 remember: false
             })

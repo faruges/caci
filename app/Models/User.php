@@ -19,7 +19,6 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -29,6 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rfc'
     ];
 
     /**
@@ -38,6 +38,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'rfc',
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
@@ -58,6 +59,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+//        'profile_photo_url',
+        'rfc',
     ];
 }

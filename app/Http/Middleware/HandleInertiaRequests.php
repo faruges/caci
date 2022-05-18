@@ -7,6 +7,8 @@ use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
+
+
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -24,7 +26,9 @@ class HandleInertiaRequests extends Middleware
      */
     public function version(Request $request): ?string
     {
+
         return parent::version($request);
+
     }
 
     /**
@@ -38,6 +42,14 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             //
+            // Synchronously
+            'appName' => config('app.name'),
+
+            // Lazily
+            'auth.user' => fn () => $request->user()
+                ? $request->user()->only('id', 'name', 'email', 'rfc')
+                : null,
+
         ]);
     }
 }

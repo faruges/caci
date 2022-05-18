@@ -6,15 +6,16 @@
                 Formulario para Datos de Tutor
             </h2>
         </template>
-        <Form @submit="onSubmit" v-slot="{ errors }" class="py-12">
+        <Form @submit="onSubmit" v-slot="{ errors }">
             <div class="py-12">
                 <div class=" max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-[url('/img/FondoRepeat.png')]  overflow-hidden shadow-xl sm:rounded-lg">
 
                         <div>
                             <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                                <div class="mt-8 text-2xl">
-                                    Bienvenido(a): {{ form.nombre }}
+                                <div class="mt-4 text-2xl">
+                                    Bienvenido(a): {{ data.data.CH_nombres }}
+                                    mensaje: {{ mensaje }}
                                 </div>
 
                             </div>
@@ -86,10 +87,10 @@
                                         </div>
 
                                         <div class="my-4">
-                                            <jet-label for="genero" value="Genero:"/>
+                                            <jet-label for="genero" value="Género:"/>
                                             <field id="genero" type="text" class="mt-1 block w-full border-gray-300
                                             focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                                                   v-model="form.genero"
+                                                   v-model="genero"
                                                    name="genero"
                                                    required
                                                    placeholder="genero"
@@ -106,7 +107,7 @@
                                                        value="Entidad Federativa de Nacimiento:"/>
                                             <field id="entidad_nacimiento" type="text" class="mt-1 block w-full border-gray-300
                                              focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                                                   v-model="form.entidad_nacimiento"
+                                                   v-model="entidad_nacimiento"
                                                    name="entidad_nacimiento"
                                                    placeholder="Entidad federativa donde ha nacido "
                                                    :rules="isRequired"/>
@@ -452,16 +453,13 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import JetLabel from '@/Jetstream/Label.vue'
 import JetInput from '@/Jetstream/Input.vue'
 import JetButton from '@/Jetstream/Button.vue'
-import {inject} from 'vue';
 import {Form, Field, ErrorMessage} from 'vee-validate';
-import {useField} from "vee-validate";
-// import * as Yup from "yup";
 import {Head, Link} from '@inertiajs/inertia-vue3';
-import * as yup from 'yup';
-import axios from "axios";
+import {usePage} from "@inertiajs/inertia-vue3";
+import {ref} from 'vue';
+import {computed} from 'vue';
 import moment from 'moment';
-import {isEnum} from "../../../../public/assets/plugins/global/plugins.bundle";
-
+import {useStore} from 'vuex'
 
 export default defineComponent({
     components: {
@@ -473,13 +471,16 @@ export default defineComponent({
         Field,
         ErrorMessage,
         Link,
-        Head
+        Head,
+        computed
 
     },
     data() {
         return {
             form: this.$inertia.form({
-                nombre: ' Andrés Manuel López Obrador',
+                nombre: this.data.data.CH_nombres,
+                apellido_paterno: this.data.data.CH_paterno,
+                apellido_materno: this.data.data.CH_materno,
                 genero: '',
                 entidad_nacimiento: '',
                 nivel_escolaridad: '',
@@ -492,10 +493,8 @@ export default defineComponent({
                 colonia: '',
                 alcaldia_o_municipio: '',
                 telefono_paticular: '',
-                apellido_paterno: '',
-                apellido_materno: '',
-                rfc: '',
-                curp: '',
+                rfc: this.data.data.RFC,
+                curp: this.data.data.CURP,
                 edad: '',
                 telefono_celular: '',
                 telefono_recados: '',
@@ -519,12 +518,89 @@ export default defineComponent({
                 status_niveles_escolares: ['En curso', 'Trunco', 'Concluido'],
                 estados_civil: ['soltero(a)', 'casado(a)', 'Viudo(a)', 'Unión libre', 'divorciado(a)'],
             },
-            post: []
+            diccionario_estados_de_la_republica: {
+                AS: {clave: 'AS', nombre: 'Aguascalientes'},
+                BC: {clave: 'BC', nombre: 'Baja california'},
+                BS: {clave: 'BS', nombre: 'Baja california sur'},
+                CC: {clave: 'CC', nombre: 'Campeche'},
+                CL: {clave: 'CL', nombre: 'Coahuila'},
+                CM: {clave: 'CM', nombre: 'Colima'},
+                CS: {clave: 'CS', nombre: 'Chiapas'},
+                CH: {clave: 'CH', nombre: 'Chihuahua'},
+                DF: {clave: 'DF', nombre: 'Ciudad de México'},
+                DG: {clave: 'DG', nombre: 'Durango'},
+                GT: {clave: 'GT', nombre: 'Guanajuato'},
+                GR: {clave: 'GR', nombre: 'Guerrero'},
+                HG: {clave: 'HG', nombre: 'Hidalgo'},
+                JC: {clave: 'JC', nombre: 'Jalisco'},
+                MC: {clave: 'MC', nombre: 'México'},
+                MN: {clave: 'MN', nombre: 'Michoacán'},
+                MS: {clave: 'MS', nombre: 'Morelos'},
+                NT: {clave: 'NT', nombre: 'Nayarit'},
+                NL: {clave: 'NL', nombre: 'Nuevo León'},
+                OC: {clave: 'OC', nombre: 'Oaxaca'},
+                PL: {clave: 'PL', nombre: 'Puebla'},
+                QT: {clave: 'QT', nombre: 'Querétaro'},
+                QR: {clave: 'QR', nombre: 'Quintana Roo'},
+                SP: {clave: 'SP', nombre: 'San Luis Potosí'},
+                SL: {clave: 'SL', nombre: 'Sinaloa'},
+                SR: {clave: 'SR', nombre: 'Sonora'},
+                TC: {clave: 'TC', nombre: 'Tabasco'},
+                TS: {clave: 'TS', nombre: 'Tamaulipas'},
+                TL: {clave: 'TL', nombre: 'Tlaxcala'},
+                VZ: {clave: 'VZ', nombre: 'Veracruz'},
+                YN: {clave: 'YN', nombre: 'Yucatan'},
+                ZS: {clave: 'ZS', nombre: 'Zacatecas'},
+                NE: {clave: 'NE', nombre: 'Nacido en el extranjero'}
+
+
+            }
         }
     },
+
+    props: {
+        data: Object
+    },
+
     setup() {
 
+     const data_sent= ref({
+            // nombre: this.data.data.CH_nombres,
+            // apellido_paterno: this.data.data.CH_paterno,
+            // apellido_materno: this.data.data.CH_materno,
+            genero: '',
+            entidad_nacimiento: '',
+            nivel_escolaridad: '',
+            status_escolar: '',
+            parentesco_con_el_infante: '',
+            estado_civil: '',
+            codigo_postal: '',
+            domicilio_particular: '',
+            numero_direccion: '',
+            colonia: '',
+            alcaldia_o_municipio: '',
+            telefono_paticular: '',
+            // rfc: this.data.data.RFC,
+            // curp: this.data.data.CURP,
+            edad: '',
+            telefono_celular: '',
+            telefono_recados: '',
+            Email: '',
+            clave_sector: '',
+            secretaria_o_ente_dministrativo: '',
+            clave_unidad_administrativa: '',
+            nombre_unidad_administrativa: '',
+            oficina_o_area_de_adscripcion: '',
+            descripcion_del_puesto: ''
+        })
 
+        const store = useStore();
+        let mensaje = computed(() => store.state.data);
+        store.dispatch('fetchData', data_sent);
+        // const data_send= computed(data_=>this.form )
+
+
+        return {mensaje, data_sent};
     },
     mounted() {
         if (localStorage.nombre) {
@@ -609,28 +685,18 @@ export default defineComponent({
             this.form.descripcion_del_puesto = localStorage.descripcion_del_puesto;
         }
 
-        const options = {
-            method: 'GET',
-            url: 'https://mexico-zip-codes.p.rapidapi.com/codigo_postal/64630',
-            headers: {
-                'X-RapidAPI-Host': 'mexico-zip-codes.p.rapidapi.com',
-                'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY'
-            }
-        };
-
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-        }).catch(function (error) {
-            console.error(error);
-        });
-
     },
 
     methods: {
         onSubmit(value) {
             this.persist();
+            var curp = (this.form.curp).toUpperCase();
+            var genero_curp = curp.substring(11, 13);
+            // const store = useStore();
+            this.form=this.data;
 
-            // this.$inertia.get(route('datos-tutor.create-P2'));
+            console.log(genero_curp);
+            this.$inertia.get(route('datos-tutor.create-P2'));
         },
         persist() {
             localStorage.nombre = this.form.nombre;
@@ -660,6 +726,33 @@ export default defineComponent({
             localStorage.nombre_unidad_administrativa = this.form.nombre_unidad_administrativa;
             localStorage.oficina_o_area_de_adscripcion = this.form.oficina_o_area_de_adscripcion;
             localStorage.descripcion_del_puesto = this.form.descripcion_del_puesto;
+        },
+        fecha_actual() {
+            return moment();
+        },
+
+        fecha_nacimiento_s21(curp) {
+            var anho = curp.substring(4, 10);
+            let dateFormat = 'YYMMDD';
+            return moment(anho, dateFormat);
+        },
+        fecha_nacimiento_s20(curp) {
+            var fecha_nacimiento = curp.substring(4, 10);
+            let sub_anho = fecha_nacimiento.substring(0, 2);
+            var anho = parseInt(sub_anho) + 1900;
+            let mes = fecha_nacimiento.substring(2, 4);
+            let dia = fecha_nacimiento.substring(4, 6);
+            let fecha = '' + anho + mes + dia;
+            let dateFormat = 'YYYYMMDD';
+            return moment(fecha, dateFormat);
+        },
+        inicio_de_siglo_21() {
+            let dateFormat = 'YYYYMMDD';
+            return moment('20000101', dateFormat);
+        },
+        fecha_minima_siglo_20() {
+            let dateFormat = 'YYYYMMDD';
+            return moment('19220101', dateFormat);
         },
 
 
@@ -695,30 +788,27 @@ export default defineComponent({
             var curp = value.toUpperCase();
             var diferenciador_siglo = curp.substring(16, 17);
             let dif_siglo_parseado = parseInt(diferenciador_siglo);
-            var anho = curp.substring(4, 10);
-            let dateFormat = 'YYYYMMDD';
-            let fecha_de_nacimiento = moment(anho, dateFormat).toDate();
-            let fecha_actual = moment();
-            let inicio_siglo_xxI = moment('20000101', dateFormat).toDate();
-            let fecha_minima_siglo_xx = moment('18800101', dateFormat).toDate();
             let tipo_de_dato_siglo = typeof dif_siglo_parseado;
             var regex = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/;
-            if (value) {
 
+            if (value) {
                 if (regex.test(curp)) {
                     if (isNaN(dif_siglo_parseado)) {
-                        if (moment(fecha_de_nacimiento).isBetween(fecha_actual, inicio_siglo_xxI)) {
-                            return true;
-                        }
-                        else {
+                        if (this.fecha_nacimiento_s21(curp).isSameOrBefore(this.fecha_actual())) {
+                            if (this.fecha_nacimiento_s21(curp).isSameOrAfter(this.inicio_de_siglo_21())) {
+                                return true;
+                            }
+                        } else {
                             return 'curp no valida';
                         }
                     } else {
                         if (tipo_de_dato_siglo === 'number') {
-                            if (moment(fecha_de_nacimiento).isBetween(inicio_siglo_xxI, fecha_minima_siglo_xx)){
-                                return true;
+                            if (this.fecha_nacimiento_s20(curp).isSameOrBefore(this.inicio_de_siglo_21())) {
+                                if (this.fecha_nacimiento_s20(curp).isSameOrAfter(this.fecha_minima_siglo_20())) {
+                                    return true;
+                                }
                             }
-                            return 'cu no valida';
+                            return 'curp no valida';
 
                         }
                     }
@@ -729,7 +819,8 @@ export default defineComponent({
             } else {
                 return 'Este campo es requerido';
             }
-        },
+        }
+        ,
         isCodPost() {
 
         }
@@ -746,15 +837,15 @@ export default defineComponent({
                 let anho;
                 let dif_siglo_parseado = parseInt(difenciador_siglo);
                 let tipo_de_dato_siglo = typeof dif_siglo_parseado;
-                // console.log(dif_siglo_parseado);
+
                 if (isNaN(dif_siglo_parseado)) {
-                    console.log('parse este no es un numero');
+                    // consol.log('parse este no es un numero');
                     let dateFormat = 'YYMMDD';
                     let fecha_de_nacimiento = moment(sub_fecha_nacimiento, dateFormat).toDate();
                     let fecha_actual = moment();
                     let edad = String(fecha_actual.diff(fecha_de_nacimiento, 'years'));
                     this.form.edad = edad;
-                    console.log(typeof edad);
+
                     return edad;
                 } else {
                     if (tipo_de_dato_siglo === 'number') {
@@ -764,16 +855,57 @@ export default defineComponent({
                         let dia = sub_fecha_nacimiento.substring(4, 6);
                         let fecha = '' + anho + mes + dia;
                         let fecha_de_nacimiento = moment(fecha, dateFormat).toDate();
-                        let fecha_actual = moment();
-                        let edad = fecha_actual.diff(fecha_de_nacimiento, 'years');
+                        let edad = this.fecha_actual().diff(fecha_de_nacimiento, 'years');
                         this.form.edad = edad;
-                        console.log('este si lo es');
+                        // console.log('este si lo es');
                         return edad;
                     }
                 }
 
             }
 
+
+        },
+        genero() {
+            if (this.form.curp) {
+                var curp = (this.form.curp).toUpperCase();
+                var genero_curp = curp.substring(10, 11);
+                if (genero_curp === 'H') {
+                    var genero = 'Masculino';
+                    this.form.genero = genero;
+                    return genero;
+                }
+                if (genero_curp === 'M') {
+                    var genero = 'Femenino';
+                    this.form.genero = genero;
+                    return genero;
+                }
+            }
+        },
+        entidad_nacimiento() {
+
+            if (this.form.curp) {
+                let curp = (this.form.curp).toUpperCase();
+                let edo_nacimiento = curp.substring(11, 13);
+                let nombre_estado;
+                let entidad_nacimiento_curp = Object.entries(this.diccionario_estados_de_la_republica);
+                for (let edo in entidad_nacimiento_curp) {
+                    for (let estao in entidad_nacimiento_curp[edo]) {
+                        let sub_edo = (entidad_nacimiento_curp[edo][estao]);
+                        let nombre = sub_edo.nombre;
+                        let clave = sub_edo.clave;
+                        if (edo_nacimiento === clave) {
+                            this.form.entidad_nacimiento = nombre;
+                            nombre_estado = nombre;
+                            break;
+                        }
+
+                    }
+
+                }
+
+                return nombre_estado;
+            }
 
         }
     }

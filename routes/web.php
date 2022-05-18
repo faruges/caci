@@ -42,6 +42,8 @@ Route::get('/datos-tutor/create-P2', [App\Http\Controllers\DatosTutorController:
     ->middleware('auth:sanctum')
     ->name('datos-tutor.create-P2');
 
+//Route::get('datos-tutor/create', [App\Http\Controllers\DatosTutorController::class]);
+
 
 //Route::resource('rfc', App\Http\Controllers\RfcController::class);
 

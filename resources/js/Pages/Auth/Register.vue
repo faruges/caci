@@ -120,8 +120,8 @@ export default defineComponent({
     },
 
     props: {
-        datosTutor: Array,
-        flash: Array,
+        datosTutor: Object,
+        flash: Object,
 
     },
 
